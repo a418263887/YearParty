@@ -1,0 +1,83 @@
+.layui-col-md2 {
+    margin-bottom: 8px;
+}
+
+    .layui-col-md2 > label {
+        width: 90px;
+    }
+
+.layui-col-md4 > label {
+    width: 90px;
+}
+
+.el-table .cell {
+    white-space: pre-line;
+}
+
+.el-tooltip__popper {
+    max-width: 500px;
+    font-size: large
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
+    background-color: #67c23a66;
+}
+
+.el-collapse-item__header {
+    height: 48px;
+    padding-left: 50px;
+    line-height: 48px;
+    background-color: #409eff;
+    color: #f1f3f9;
+    font-size: 17px;
+    font-weight: 1000;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.labelbiaozhu .el-form-item__label {
+    background-color: #e7923e;
+    color: #ffffff;
+    padding: 0px 12px 0px 12px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+
+.el-collapse-item__content {
+    padding-bottom: 2px;
+}
+
+.el-checkbox__label {
+    line-height: 26px;
+}
+
+.el-form-item--mini .el-form-item__content, .el-form-item--mini .el-form-item__label {
+    line-height: 20px;
+}
+
+.el-checkbox {
+    margin-right: 2px;
+}
+
+.el-checkbox__label {
+    padding-left: 0px;
+}
+
+
+
+.el-radio__label {
+    font-size: 14px;
+    padding-left: 0px;
+}
+
+.el-radio {
+    color: #606266;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.el-radio-group {
+    font-size: 0;
+    margin-top: 4px;
+}

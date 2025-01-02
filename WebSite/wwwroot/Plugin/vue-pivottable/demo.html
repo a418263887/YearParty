@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        .pvtUi > tbody > tr > td:nth-child(1) {
+            width:20vw
+        }
+    </style>
+</head>
+<body>
+
+    <script src="../vue-2.5.10.mini.js"></script>
+    <script src="vue-pivottable.umd.js"></script>
+    <link href="vue-pivottable.css" rel="stylesheet" />
+   
+    <div id="app">
+        <vue-pivottable-ui v-model="config"
+                           :data="pivotData"
+                           :aggregator-name="aggregatorName"
+                           :renderer-name="rendererName"
+                           :rows="rows"
+                           :cols="cols"
+                           :vals="vals"
+                           :locale-strings="localeStrings[locale]"
+                           :row-total="true"
+                           :col-total="true">       
+        </vue-pivottable-ui>
+    </div>
+
+
+
+    <script>
+        window.Vue.use(window['vue-pivottable'])
+        new Vue({
+            el: "#app",
+            data: {
+                config: {},
+                pivotData: [
+                    ['Total Bill', 'Tip', 'Payer Gender', 'Payer Smoker', 'Day of Week', 'Meal', 'Party Size'],
+                    [16.99, 1.01, 'Female', 'Non-Smoker', 'Sunday', 'Dinner', 2],
+                    [10.34, 1.66, 'Male', 'Non-Smoker', 'Sunday', 'Dinner', 3],
+                    [21.01, 3.5, 'Male', 'Non-Smoker', 'Sunday', 'Dinner', 3],
+                    [23.68, 3.31, 'Male', 'Non-Smoker', 'Sunday', 'Dinner', 2],
+                    [24.59, 3.61, 'Female', 'Non-Smoker', 'Sunday', 'Dinner', 4],
+                    [25.29, 4.71, 'Male', 'Non-Smoker', 'Sunday', 'Dinner', 4],
+                    [8.77, 2, 'Male', 'Non-Smoker', 'Sunday', 'Dinner', 2],
+                    [26.88, 3.12, 'Male', 'Non-Smoker', 'Sunday', 'Dinner', 4],
+                    [15.04, 1.96, 'Male', 'Non-Smoker', 'Sunday', 'Dinner', 2],
+                    [14.78, 3.23, 'Male', 'Non-Smoker', 'Sunday', 'Dinner', 2],
+
+                ],
+                aggregatorName: 'Sum',
+                rendererName: 'Table Heatmap',
+                rows: ['Payer Gender'],
+                cols: ['Party Size'],
+                vals: ['Total Bill'],
+                disabledFromDragDrop: ['Party Size', 'Payer Gender'],
+                hiddenFromDragDrop: ['Total Bill'],
+                localeStrings: {
+                    en: {
+                        renderError: '展示结果时出错.',
+                        computeError: '计算结果时出错.',
+                        uiRenderError: '展示界面时出错',
+                        selectAll: '选择全部',
+                        selectNone: '全部不选',
+                        tooMany: '因数据过多而无法列出',
+                        filterResults: '输入值帮助筛选',
+                        totals: '合计',
+                        only: 'only',
+                        rendererMap: {
+                            Table: '表格',
+                            'Table Heatmap': '热图',
+                            'Table Col Heatmap': '列热图',
+                            'Table Row Heatmap': '行热图',
+                            'Export Table TSV': '文本数据',
+                            'Grouped Column Chart': '柱状图',
+                            'Stacked Column Chart': '堆叠柱状图',
+                            'Grouped Bar Chart': '条形图',
+                            'Stacked Bar Chart': '堆叠条形图',
+                            'Line Chart': '折线图',
+                            'Dot Chart': '点整图',
+                            'Area Chart': '面积图',
+                            'Scatter Chart': '散列图',
+                            'Multiple Pie Chart': '饼图'
+                        },
+                        aggregatorMap: {
+                            Count: '计数',
+                            'Count Unique Values': '不重复值的个数',
+                            'List Unique Values': '列出非重复值',
+                            Sum: '合计',
+                            'Integer Sum': '取整合计',
+                            Average: '平均值',
+                            Median: '中位数',
+                            'Sample Variance': '方差',
+                            'Sample Standard Deviation': '标准差',
+                            Minimum: '最小值',
+                            Maximum: '最大值',
+                            First: '第一',
+                            Last: '最后',
+                            'Sum over Sum': '两和之比',
+                            'Sum as Fraction of Total': '和在总计中的比例',
+                            'Sum as Fraction of Rows': '和在行合计中的比例',
+                            'Sum as Fraction of Columns': '和在列合计中的比例',
+                            'Count as Fraction of Total': '百分比',
+                            'Count as Fraction of Rows': '行百分比',
+                            'Count as Fraction of Columns': '列百分比'
+                        }
+                    }
+                  
+                },
+                locale: 'en'
+
+            },
+            methods: {
+                toggle: function (todo) {
+                    todo.done = !todo.done
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

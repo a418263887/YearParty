@@ -1,0 +1,77 @@
+﻿@{
+    Layout = null;
+    string v = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+ 
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewBag.Title</title>
+    <script src="~/Plugin/jquery/jquery-1.9.1.min.js"></script>
+    <script src="/Plugin/layui/layui.js"></script>
+    <script src="~/Plugin/vue-2.5.10.mini.js"></script>
+    <script src="~/Plugin/My97DatePicker/WdatePicker.js"></script>
+    <script src="~/Plugin/element-ui/index.js"></script>
+    <link href="~/Plugin/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/css/el-main-ui.css?v=@v" rel="stylesheet" />
+    <link href="~/Plugin/element-ui/index.css" rel="stylesheet" />
+    <link href="~/css/main.css?v=@v" rel="stylesheet" />
+
+    <script>
+        Vue.prototype.subLen = function (str, len) {
+            if (str == null)
+                return null;
+            if (typeof (len) == "undefined") {
+                len = 20;
+            }
+            if (str.length > len) {
+                return str.substring(0, len - 1) + "..."
+            } else {
+                return str
+            }
+        }
+        Vue.prototype.dateStr = function (str) {
+            if (str == null)
+                return null;
+            if (str.length < 10)
+                return str
+            return str.substr(0, 10);
+        }
+        Vue.prototype.toFixed = function (number) {
+            if (number == null)
+                return 0;
+            if (typeof (number) == "undefined") {
+                return 0
+            }
+            return number.toFixed(2);
+        }
+        Vue.prototype.$ELEMENT = {
+            size: 'small',
+            zIndex: 3000
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <script type="text/javascript">
+        //加载弹出层
+        layui.use(['form', 'element'],
+            function () {
+                layer = layui.layer;
+                element = layui.element;
+            });
+    </script>
+    <script src="~/js/main.js?v=@v"></script>
+</body>
+</html>

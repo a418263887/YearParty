@@ -1,0 +1,256 @@
+﻿
+<h3>
+    本周数据概览
+</h3>
+<hr />
+
+<!--<div class="row">-->
+<!-- /.col -->
+<!--<div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+        <span class="info-box-icon bg-green"><i class="fa  fa-cart-plus"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">销售金额</span>
+            <span class="info-box-number">@ViewBag.saleprice</span>
+        </div>-->
+<!-- /.info-box-content -->
+<!--</div>-->
+<!-- /.info-box -->
+<!--</div>-->
+<!-- /.col -->
+<!--<div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+        <span class="info-box-icon bg-yellow"><i class="fa fa-cart-arrow-down"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">采购金额</span>
+            <span class="info-box-number">@ViewBag.issueprice</span>
+        </div>-->
+<!-- /.info-box-content -->
+<!--</div>-->
+<!-- /.info-box -->
+<!--</div>
+<div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+        <span class="info-box-icon bg-light-blue"><i class="fa fa-cny "></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">出票利润</span>
+            <span class="info-box-number">@(ViewBag.saleprice - ViewBag.issueprice)</span>
+        </div>-->
+<!-- /.info-box-content -->
+<!--</div>-->
+<!-- /.info-box -->
+<!--</div>-->
+<!-- /.col -->
+<!--<div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="fa fa-group"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">订单数/乘机人数/航段数</span>
+            <span class="info-box-number">@ViewBag.ordercount / @ViewBag.passcount / @ViewBag.segcount</span>
+        </div>-->
+<!-- /.info-box-content -->
+<!--</div>-->
+<!-- /.info-box -->
+<!--</div>-->
+<!-- /.col -->
+<!--</div>
+
+<div class="row" id="app2">
+
+
+
+    <div class="col-md-12">
+        <div class="box box-primary">
+
+            <div class="box-body">
+                <p style="font-size:1.3em;font-weight:600;margin-bottom:10px;">订单统计</p>
+
+                <div style="margin-top: 20px">
+                    <el-radio-group v-model="form.tjType" size="mini" @@input="dateTypeChange">
+                        <el-radio-button label="1">供应</el-radio-button>
+                        <el-radio-button label="2">销售</el-radio-button>
+                    </el-radio-group>
+                    &nbsp;&nbsp;
+                    <el-radio-group v-model="form.dateType" size="mini" @@input="dateTypeChange">
+                        <el-radio-button label="1">今天</el-radio-button>
+                        <el-radio-button label="2">昨天</el-radio-button>
+                        <el-radio-button label="3">前天</el-radio-button>
+                        <el-radio-button label="4">近7天</el-radio-button>
+
+                    </el-radio-group>
+                </div>
+
+                <el-table :data="dataList"
+                          :empty-text="msg"
+                          size="mini"
+                          ref="dataList"
+                          border show-summary
+                          v-loading="loading"
+                          style="width: 100%">
+
+                    <el-table-column type="index"
+                                     label="序号"
+                                     width="60"
+                                     :index="indexMethod"
+                                     align="center">
+                    </el-table-column>
+                    <el-table-column prop="渠道"
+                                     label="渠道">
+                    </el-table-column>
+                    <el-table-column prop="预订单数" sortable
+                                     label="预订单数">
+                    </el-table-column>
+                    <el-table-column prop="支付单数" sortable
+                                     label="支付单数">
+                    </el-table-column>
+                    <el-table-column prop="预订支付率" sortable
+                                     label="预订支付率">
+                    </el-table-column>
+
+                    <el-table-column prop="每单平均人数" sortable
+                                     label="每单平均人数">
+                    </el-table-column>
+                    <el-table-column prop="预订人数" sortable
+                                     label="预订人数">
+                    </el-table-column>
+                    <el-table-column prop="支付人数" sortable
+                                     label="支付人数">
+                    </el-table-column>
+
+                </el-table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+</div>-->
+<!--<div id="app" class="layui-col-md12 @*layuimini-container*@ @*layuimini-main*@">
+    <div class="layui-row layui-col-space10" style="margin:8px">
+        <div class="layui-col-md6">
+
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <i class="el-icon-bell"></i><span>内部公告</span>
+                    <a style="float: right; padding: 3px 0; color:#409EFF;" href="javascript:;" class="NoticeReadList" data-title="通知公告" layuimini-content-href="/MMC/Notice/ReadList" target="_self">更多...</a>
+                </div>
+                <div class="text item">
+                    <el-table-->
+@*border*@
+<!--:data="tableMyNotice" size="mini" height="400px" lay-filter="data-list">
+<el-table-column prop="Notice_ReadType" width="80"
+                 label="阅读类型">
+</el-table-column>
+<el-table-column prop="Notice_Type" width="100"
+                 label="公告类型">
+</el-table-column>
+<el-table-column label="标题">
+    <template slot-scope="scope">
+        <el-popover placement="top">
+            <div slot="reference" class="name-wrapper">-->
+@*<el-tag size="medium"><a href="javascript:;" class="NoticeReadList" data-title="通知公告" layuimini-content-href="/MMC/Notice/ReadList">{{scope.row.Notice_Title}}</a></el-tag>*@
+<!--<el-button type="primary" size="mini" @@click="handleMyNotice(scope.row.ID)">{{scope.row.Notice_Title}}</el-button>
+            </div>
+        </el-popover>
+    </template>
+</el-table-column>-->
+@*<el-table-column prop="Notice_Title"
+    label="标题">
+    </el-table-column>*@
+@*<el-table-column prop="Notice_Content"
+    label="内容">
+    </el-table-column>*@
+<!--<el-table-column prop="UpdateTime" width="100" :formatter="formatDate"
+                                 label="发布时间">
+                </el-table-column>
+                <el-table-column prop="UpdateUserName" width="80"
+                                 label="发布用户">
+                </el-table-column>
+            </el-table>
+        </div>
+    </el-card>
+
+</div>
+<div class="layui-col-md6">
+
+    <el-card class="box-card">
+        <div slot="header" class="clearfix">
+            <i class="el-icon-star-off"></i><span>公司公告</span>
+            <a style="float: right; padding: 3px 0; color:#409EFF;" href="javascript:;" class="NoticeIndex" data-title="渠道公告" layuimini-content-href="/MMC/Notice/Index" target="_self">更多...</a>
+        </div>
+        <div class="text item">
+            <el-table-->
+@*border*@
+<!--:data="tableChannelNotice" size="mini" height="400px">
+<el-table-column prop="Notice_ReadType" width="80"
+                 label="阅读类型">
+</el-table-column>
+<el-table-column prop="Notice_Type_Title" width="100"
+                 label="公告类型">
+</el-table-column>
+<el-table-column prop="Notice_Level" width="80"
+                 label="公告级别">
+</el-table-column>
+<el-table-column label="标题">
+    <template slot-scope="scope">
+        <el-popover placement="top">
+            <div slot="reference" class="name-wrapper">-->
+@*<el-tag size="medium"><a href="javascript:;" class="NoticeIndex" data-title="渠道公告" layuimini-content-href="/MMC/Notice/Index" target="_self">{{scope.row.Notice_Title}}</a></el-tag>*@
+<!--<el-button type="primary" size="mini" @@click="handleChannelNotice(scope.row.ID)">{{scope.row.Notice_Title}}</el-button>
+            </div>
+        </el-popover>
+    </template>
+</el-table-column>-->
+@*<el-table-column prop="Notice_Title"
+    label="标题">
+    </el-table-column>*@
+@*<el-table-column prop="Notice_Content"
+    label="内容">
+    </el-table-column>*@
+<!--<el-table-column prop="UpdateTime" width="100" :formatter="formatDate"
+                                         label="发布时间">
+                        </el-table-column>
+                        <el-table-column prop="UpdateUserName" width="80"
+                                         label="发布用户">
+                        </el-table-column>
+                    </el-table>
+                </div>
+            </el-card>
+
+        </div>
+    </div>
+</div>-->
+@*<script>
+        layui.use(['jquery', "miniTab"], function () {
+            var $ = layui.jquery,
+                miniTab = layui.miniTab,
+                table = layui.table
+
+            //miniTab 常见用法 需要在use中添加 miniTab  layui.use(["miniTab"], function () {})
+            //1 通过按钮打开一个新的标签
+            // <a href="javascript:;" layuimini-content-href="https://www.baidu.com" data-title="百度" data-icon="fa fa-gears">百度</a>
+            //2 通过js出发打开一个table
+            //miniTab.openNewTabByIframe({ href: "https://www.baidu.com", title: "百度" })
+            //3 在tab中关闭自己
+            //miniTab.deleteCurrentByIframe();
+
+            $(".NoticeReadList").click(function () {
+                miniTab.openNewTabByIframe({ href: "/MMC/Notice/ReadList", title: "通知公告" })
+            });
+            $(".NoticeIndex").click(function () {
+                miniTab.openNewTabByIframe({ href: "/MMC/Notice/Index", title: "渠道公告" })
+            });
+
+        });
+        function handleDownloads(o) { alert(o); }
+    </script>*@

@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.code Error</title>
+</head>
+<body style="text-align:center">
+    <div style="margin-top:100px;text-align:center;width:80%;margin:10px auto">
+        <h3>@ViewBag.code</h3>
+        <h4>@ViewBag.errorTitle</h4>
+        <pre style="text-align:left"> @Html.Raw(ViewBag.Message)</pre>
+   </div>
+</body>
+</html>

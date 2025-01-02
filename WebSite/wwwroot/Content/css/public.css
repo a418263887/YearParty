@@ -1,0 +1,1096 @@
+html, body, ul, ol, p, div, h1, h2, h3, h4, h5, h6, a, table, th, td, tr {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+}
+
+
+.text-center {
+    text-align:center;
+    vertical-align:middle;
+}
+
+body {
+    background-color: #FBFBFB;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+font {
+    color: #979797;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.block {
+    display: block;
+}
+
+.auto {
+    margin: auto;
+}
+
+.b {
+    font-weight: bold;
+}
+
+.clear {
+    clear: both;
+}
+/*--------------public 结束----------------*/
+
+/*--------------首页-------------*/
+.center {
+    width: 100%;
+    background: white;
+}
+
+.center-div {
+    width: 49%;
+    right: 1%;
+    margin-right: -1px;
+    position: relative;
+    border: 1px solid white;
+    height: 92px;
+    background: #f3f3f3;
+}
+
+.active-menu {
+    width: 46% !important;
+    height: 80px !important;
+    top: 6px;
+    margin-bottom: 12px;
+    margin-left: 3%;
+    right: 2% !important;
+    border: 1px solid #faf5f5;
+    border-radius: 1px;
+}
+
+.center-div a {
+    background: url(/content/img/icon04.png) no-repeat;
+    background-position: 10% -9px;
+    height: 50px;
+    margin-top: 21px;
+    line-height: 50px;
+    color: #2b2b2b;
+}
+
+.hotel-reservation {
+    background-position-y: -558px !important;
+}
+
+.ticket-reservation {
+    background-position-y: -378px !important;
+}
+
+.online-check-in {
+    background-position-y: -189px !important;
+}
+
+.flight-dynamics {
+    background-position-y: -903px !important;
+}
+
+.myOrder {
+    background-position-y: -728px !important;
+}
+
+.center div a span {
+    margin-left: 46%;
+}
+/**/
+
+.rerouts {
+    width: 100%;
+    height: auto;
+}
+
+.rerout-ul {
+    margin: 0 0.1em;
+    height: auto;
+}
+
+.rer-ul-items {
+    width: 100%;
+    height: auto;
+    border: 1px solid #dddddd;
+}
+
+.rer-items-con {
+    width: 100%;
+    height: auto;
+}
+
+    .rer-items-con div {
+        height: auto;
+        color: #222;
+        font-size: 100%;
+        font-family: "宋体";
+    }
+
+.con-start {
+    width: 25%;
+    padding-left: 10px;
+}
+
+    .con-start span {
+        padding-left: 4px;
+    }
+
+        .con-start span:first-child, .con-end span:first-child {
+            margin: 12px 0 6px 0;
+        }
+
+    .con-start p {
+        margin-top: 4px;
+        color: #979797;
+        font-size: 75%;
+        margin-bottom: 6px;
+    }
+
+        .con-start p span {
+            padding-right: 2px;
+        }
+
+.con-direct {
+    width: 20%;
+}
+
+    .con-direct .direct {
+        width: 100% !important;
+        height: 32px !important;
+        background: url(/content/img/icon.png) no-repeat center -25px;
+        text-align: center;
+        margin-top: 35px;
+        color: #979797;
+        line-height: 70px;
+        font-size: 75% !important;
+    }
+
+.con-price {
+    width:24%;
+}
+
+.con-end {
+    text-align: center;
+}
+
+.con-end {
+    width: 25%;
+}
+
+.price {
+    margin-right: 6px;
+    margin-top: 28px;
+    height: 48px !important;
+    width: 92% !important;
+    text-align: center;
+}
+
+    .price p, .price label {
+        font-size: 75%;
+    }
+
+    .price p {
+        color: #ff0100;
+    }
+
+        .price p b {
+            width: 14px;
+            height: 10px;
+            margin-top: 8px;
+            background: url(/content/img/icon.png) no-repeat 0px -18px;
+        }
+
+            .price p b.active {
+                background: url(/content/img/icon.png) no-repeat 1px 1px;
+            }
+
+        .price p span {
+            font-size: 20px;
+        }
+
+    .price label span {
+        margin-left: 4px;
+    }
+
+.ul-flight {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.flg-ul-items {
+    height: auto;
+    width: 100%;
+    background: #edf3fb;
+}
+
+.flg-items-con {
+    width: 98%;
+    height: auto;
+    border: 1px solid #cbcbcb;
+    font-family: "微软雅黑","microsoft yahei";
+    padding-left: 8px;
+    padding-bottom: 8px;
+}
+
+.flg-fl-con span {
+    padding-top: 8px;
+    margin-right: 4px;
+}
+
+.cw, .discount, .flg-price, .reserve {
+    margin-top: 4px;
+    font-size: 75%;
+}
+
+.cw {
+    color: #979797;
+}
+
+.discount {
+    color: #fd0300;
+}
+
+.flg-fl-con {
+    padding-right: 10px;
+}
+
+    .flg-fl-con p {
+        color: #40b5e3;
+        font-size: 75%;
+    }
+
+.flg-fr-con {
+    padding-right: 10px;
+}
+
+.flg-price label:first-child {
+    color: #FF0100;
+}
+
+    .flg-price label:first-child span {
+        font-size: 16px;
+    }
+
+.flg-price label:last-child {
+    color: #979797;
+}
+
+    .flg-price label:last-child span {
+        color: #3a7f0f;
+    }
+
+.reserve {
+    border: 0px;
+    color: white;
+    background: #f7891e;
+    height: 38px;
+    width: 50px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    -moz-border-radius: 4px;
+    margin-left: 12px;
+}
+
+.flg-contents {
+    width: 98%;
+    border-top: 1px solid #cbcbcb;
+    margin-right: 8px;
+    display: none;
+}
+
+    .flg-contents strong {
+        height: 38px;
+        line-height: 38px;
+    }
+
+.lc-info {
+    height: auto;
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+    table.flg-info, .lc-info p {
+        font-size: 75%;
+        color: #979797;
+    }
+
+    .lc-info p {
+        margin-top: 10px;
+    }
+
+/*-------------个人信息--------------*/
+.person-header {
+    height: auto;
+    width: 100%;
+    background: #40B5E3;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.person-info {
+    width: 30%;
+    height: 152px;
+}
+
+    .person-info span {
+        background: rgba(0,0,0,0.3);
+        height: 32px;
+        width: 100px;
+        border-radius: 20px;
+        line-height: 32px;
+        font-size: 75%;
+        color: white;
+        margin-top: 60px;
+    }
+
+        .person-info span b {
+            height: 100%;
+            width: 32px;
+            background: url(/content/img/icon01.png) no-repeat;
+            background-position: 6px 0px;
+            text-align: center;
+            margin-right: 6px;
+        }
+
+.info-bg {
+    background-position: 6px -64px !important;
+}
+
+.person-img {
+    width: 40%;
+}
+
+    .person-img span {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+        color: white;
+    }
+
+    .person-img img {
+        height: 100px;
+        width: 98px;
+        background: gainsboro;
+        border: 1px solid gray;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -o-border-radius: 50%;
+        -moz-border-radius: 50%;
+        overflow: hidden;
+    }
+
+.person-contents, .person-ul {
+    width: 100%;
+    height: auto;
+}
+
+.person-ul-items {
+    width: 100%;
+    height: auto;
+    background: white;
+    margin-top: 10px;
+}
+
+.person-items-con {
+    margin-left: 10px;
+    width: 96%;
+    height: auto;
+}
+
+.person-title {
+    height: 46px;
+    border-bottom: 1px solid #dddddd;
+    line-height: 46px;
+}
+
+    .person-title span {
+        font-size: 125%;
+    }
+
+    .person-title a, .my-orders div a {
+        color: #999;
+    }
+
+    .person-title a {
+        font-size: 100%;
+    }
+
+        .person-title a label {
+            margin-left: 10px;
+        }
+
+.my-orders {
+    height: auto;
+    width: 100%;
+}
+
+    .my-orders div {
+        width: 25%;
+        height: 93px;
+        text-align: center;
+        font-size: 75%;
+    }
+
+        .my-orders div b {
+            width: 80px;
+            height: 50px;
+            background: url(/content/img/icon01.png) no-repeat center;
+            background-position-y: -125px;
+            position: relative;
+        }
+
+            .my-orders div b strong {
+                position: absolute;
+                top: 20px;
+                right: 18px;
+                height: 15px;
+                width: 15px;
+                border: 1px solid #FD0300;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -o-border-radius: 50%;
+                text-align: center;
+                line-height: 15px;
+                font-size: 75%;
+                font-weight: normal;
+                color: #FD0300;
+                background: white;
+            }
+
+.my-harvest b {
+    background-position-y: -208px !important;
+}
+
+.my-rated b {
+    background-position-y: -282px !important;
+}
+
+.my-after-sales b {
+    background-position-y: -352px !important;
+}
+
+.my-orders div span {
+    color: #FD0300;
+    margin-top: 30px;
+    font-size: 150%;
+}
+
+    .my-orders div span label {
+        font-size: 75%;
+        margin-right: 5px;
+    }
+
+/*-----------填写订单-------------*/
+.all {
+    height: auto;
+    width: 100%;
+    position: relative;
+    left: 0;
+    bottom: 0px;
+    padding: 18px 0 56px 0;
+}
+
+.voyage {
+    height: auto;
+    background: #92d8f9;
+    width: 96%;
+    margin-left: 2%;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.voyage-title {
+    text-align: center;
+    line-height: 36px;
+}
+
+    .voyage-title span {
+        color: #33a3d3;
+    }
+
+        .voyage-title span:nth-child(2) {
+            margin: 0 4%;
+        }
+
+.voyage-title, .voyage-exist {
+    height: 36px;
+    font-size: 0.8em;
+}
+
+.voyage-content {
+    background: white;
+    height: 112px;
+    width: 100%;
+    font-size: 0.6em;
+}
+
+.voyage-exist {
+    text-align: right;
+    margin-right: 10%;
+    line-height: 40px;
+}
+
+    .voyage-exist span {
+        background: url(/content/img/icon02.png) no-repeat;
+        background-position: 96px -8px;
+        padding: 8px 36px;
+    }
+
+.voyage-son {
+    height: 54px;
+    width: 54px;
+    border: 1px solid #b1ecff;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 54px;
+    margin-left: 14px;
+    margin-top: 28px;
+}
+
+.voyage-con {
+    width: 72%;
+}
+
+    .voyage-con p:first-child {
+        margin-top: 6px;
+    }
+
+    .voyage-con p {
+        line-height: 24px;
+    }
+
+        .voyage-con p span:nth-child(2) {
+            margin: 0 8%;
+        }
+
+.Take-people span, .tel-people span {
+    background: url(/content/img/icon02.png) no-repeat right;
+    background-position: 90% -162px;
+}
+
+.Take-people {
+    margin: 16px 0;
+}
+
+.tel-people span {
+    background-position: 90% -84px;
+}
+
+.contact {
+    height: auto;
+    width: 100%;
+    background: white;
+}
+
+.contact-ul li, .Take-title, .Take-people {
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    height: auto;
+    line-height: 40px;
+    font-size: 0.8rem;
+}
+
+.contact-ul li {
+    padding-left: 10%;
+    display: block;
+}
+
+.txt-input {
+    border: 1px solid #e7e7e7;
+    width: 60%;
+    height: 30px;
+    margin-right: 10%;
+    margin-top: 4px;
+}
+
+.editors {
+    height: auto;
+    width: 90%;
+}
+
+.editors-ul li {
+    font-size: 0.8em;
+}
+
+    .editors-ul li input {
+        border: 0;
+        height: 40px;
+        width: 70%;
+        outline: none;
+        margin-left: 20px;
+    }
+
+.weui-use {
+    background: rgba(0,0,0,0.3);
+    z-index: 44 !important;
+}
+
+.weui-p {
+    min-height: 220px;
+    background: white !important;
+}
+
+.use-exist-p, .ticket-con-info {
+    width: 90%;
+    margin-left: 10%;
+}
+
+.use-exist-p {
+    margin-top: 10px;
+    height: 40px;
+    line-height: 40px;
+}
+
+    .use-exist-p span {
+        height: 30px;
+        width: 60px;
+        background: url(/content/img/icon.png) no-repeat right;
+        background-position: 0px -56px;
+    }
+
+.ticket-con-info p {
+    text-indent: 2em;
+    font-size: 0.8em;
+}
+
+.safest-ul {
+    width: 100%;
+    height: auto;
+    background: white;
+    border: 1px solid #E7E7E7;
+    margin-top: 16px;
+}
+
+    .safest-ul li {
+        height: auto;
+        margin: 10px 0px 10px 10%;
+        font-size: 0.8em;
+    }
+
+.ckbox {
+    height: 28px;
+    width: 28px;
+    background: url(/content/img/icon02.png) no-repeat;
+    background-position: -6px -322px;
+}
+
+.ckbox-hover {
+    background-position: -6px -243px;
+}
+
+.safest-ul li span {
+    margin-left: 10px;
+    height: 26px;
+    line-height: 26px;
+}
+
+.safest-ul li p {
+    line-height: 20px;
+    padding-top: 5px;
+    width: 96%;
+}
+
+.safest-ul li span i {
+    height: 100%;
+    width: 22px;
+    background: url(/content/img/icon.png) no-repeat;
+    background-position: -1px -146px;
+}
+
+.agreement {
+    margin-top: 20px;
+    border: 1px solid #E7E7E7;
+    padding: 10px 10%;
+}
+
+    .agreement span {
+        line-height: 24px;
+        margin-left: 10px;
+        font-size: 1.2em;
+        color: #197fa7;
+    }
+
+.btn-footer {
+    width: 100%;
+    height: 56px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: white;
+    text-align: center;
+    line-height: 56px;
+    z-index: 33;
+}
+
+.btn-price {
+    height: 100%;
+    width: 60%;
+    background: black;
+}
+
+    .btn-price i {
+        height: 30px;
+        width: 30px;
+        background: url(/content/img/icon.png) no-repeat right;
+        background-position: 0px -106px;
+        margin-top: 10px;
+    }
+
+.btn-price-hover {
+    background-position: 0px -80px !important;
+}
+
+.btn-orders {
+    background: #ff9900;
+    width: 40%;
+}
+
+.orders-info {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 32;
+}
+
+.orders-info-ul {
+    width: 100%;
+    height: auto;
+    background: white;
+    position: absolute;
+    bottom: 56px;
+    left: 0;
+}
+
+    .orders-info-ul li {
+        height: auto;
+        width: 100%;
+        border-top: 1px solid #E7E7E7;
+        padding-top: 5px;
+    }
+
+        .orders-info-ul li p {
+            display: inline-block;
+            width: 80%;
+            padding: 0px 10%;
+            font-family: "微软雅黑","microsoft yahei";
+            line-height: 20px;
+        }
+
+            .orders-info-ul li p span label {
+                color: #ff9900;
+                margin-right: 10px;
+            }
+
+
+
+/*--------------行程---------------*/
+.day-march {
+    width: 90%;
+    margin-left: 5%;
+    height: auto;
+    margin-top: 15px;
+    position: relative;
+}
+
+.rerouted {
+    height: 32px;
+    width: 182px;
+    line-height: 32px;
+    background: #f5f5f5;
+    position: absolute;
+    text-align: center;
+    top: -16px;
+    left: 19%;
+    color: #757575;
+}
+
+    .rerouted span {
+        margin-left: 10px;
+    }
+
+.rerout-start, .rerout-end {
+    width: 35%;
+}
+
+.rerout-start, .rerout-end, .rerout-conter {
+    height: auto;
+    padding: 40px 0 20px 0;
+    color: #333;
+}
+
+.rerout-conter {
+    width: 30%;
+    text-align: center;
+}
+
+    .rerout-conter span {
+        color: #49cb33;
+        font-size: 0.8em;
+        padding-top: 42px;
+        background: url(/content/img/icon03.png) no-repeat center 0px;
+    }
+
+.rerout-end {
+    text-align: right;
+}
+
+    .rerout-start label, .rerout-end label {
+        font-size: 0.8em;
+        color: #656565;
+    }
+
+    .rerout-start b, .rerout-end b {
+        font-size: 1.6em;
+        color: #303030;
+    }
+
+    .rerout-start label span, .rerout-end label span {
+        margin-left: 5px;
+    }
+
+.Travel-person {
+    padding-top: 20px;
+}
+
+    .Travel-person span {
+        font-size: 0.8em;
+        color: #a2a2a2;
+    }
+
+    .Travel-person p {
+        color: #656565;
+        margin-top: 10px;
+    }
+
+        .Travel-person p label {
+            margin-right: 10px;
+        }
+
+.day-march-menu {
+    margin-top: 28px;
+    border-top: 1px solid #E7E7E7;
+    border-bottom: 1px solid #E7E7E7;
+    background: white;
+    padding: 46px 0 40px 0;
+}
+
+    .day-march-menu label {
+        width: 1px;
+        background: #E7E7E7;
+        height: 38px;
+        margin-top: 12px;
+    }
+
+    .day-march-menu div {
+        padding-top: 42px;
+    }
+
+.march-menu-start, .march-menu-end, .march-menu-center {
+    height: auto;
+    color: #1887fb;
+    text-align: center;
+    background: url(/content/img/icon03.png) no-repeat center -54px;
+}
+
+.march-menu-start, .march-menu-end {
+    width: 34%;
+}
+
+.march-menu-center {
+    background-position-y: -112px;
+    width: 30%;
+}
+
+.march-menu-end {
+    background-position-y: -174px;
+}
+
+
+
+
+.btn-march-orders {
+    margin-top: 28px;
+    width: 80%;
+    margin-left: 10%;
+    height: 48px;
+    background: #11a9ec;
+    border: 0;
+    border-radius: 6px;
+    -o-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    color: white;
+    font-size: 1.2em;
+}
+
+.person label {
+
+    border:1px solid black;
+    color:#303030;
+    font-size:1.5em;
+    padding:2px;
+       
+}
+
+
+/*公共*/
+.nav-top {
+    background-color: #40B5E3;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+}
+
+
+
+
+.main-body {
+    position: relative;
+    top: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+.lefthead {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    z-index: 2;
+}
+
+.righthead {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    z-index: 2;
+}
+
+
+.header_return {
+    display: block;
+    width: 12px;
+    height: 20px;
+    background: url(/content/img/comm_bg.png) no-repeat -100px -105px;
+    background-size: 242px 260px;
+    margin-left: 12px;
+    margin-top: 14px;
+}
+
+.header_home {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(/content/img/comm_bg.png) no-repeat -146px 0;
+    background-size: 242px 260px;
+    margin-left: 12px;
+    margin-top: 14px;
+}
+
+.icon-dropdown {
+    display: inline-block;
+    margin-left: .2em;
+    margin-right: .2em;
+}
+
+    .icon-dropdown:before {
+        content: ' ';
+        position: absolute;
+        top: 35%;
+        right: 8px;
+        background: url(/content/img/arrow_grey_sprites.png) -10px 0 no-repeat;
+        width: 0.7em;
+        height: 1.2em;
+        background-size: 450%;
+    }
+
+
+.query-tool {
+    background-color: #40B5E3;
+    text-align: center;
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    position: fixed;
+    z-index: 1;
+    top: 50px;
+    text-align: center;
+    padding: 0px;
+    border-top: 1px solid white;
+}
+
+    .query-tool div {
+        height: 40px;
+        float: left;
+        margin: 0px;
+    }
+
+.sort-tool {
+    background-color: #40B5E3;
+    line-height: 40px;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 0px;
+    position: fixed;
+    height: 35px;
+    width: 100%;
+    right: 0px;
+    bottom: 0px;
+    z-index: 2;
+    text-align: center;
+}
+
+    .sort-tool div {
+        height: 40px;
+        float: left;
+        margin: 0px;
+    }
+
+
+.p-info {
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 5px;
+}

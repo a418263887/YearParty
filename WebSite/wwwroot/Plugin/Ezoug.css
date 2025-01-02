@@ -1,0 +1,78 @@
+﻿/*自定义按钮颜色*/
+/*紫色按钮*/
+.el-button--紫色 {
+    color: #FFF;
+    background-color: #9709ef;
+    border-color: #9709ef;
+}
+    .el-button--紫色:focus, .el-button--紫色:hover {
+        background: #af47ef;
+        border-color: #af47ef;
+        color: #FFF;
+    }
+.el-button--紫色.is-plain {
+    color: #9709ef;
+    background: #f4e0ff;
+    border-color: #bd7ae7;
+}
+
+    .el-button--紫色.is-plain:focus, .el-button--紫色.is-plain:hover {
+        background: #9709ef;
+        border-color: #9709ef;
+        color: #FFF;
+    }
+/*粉色按钮*/
+.el-button--粉色 {
+    color: #FFF;
+    background-color: #FF60AF;
+    border-color: #FF60AF;
+}
+
+.el-button--粉色:focus, .el-button--粉色:hover {
+    background: #f18dbf;
+    border-color: #f18dbf;
+    color: #FFF;
+}
+.el-button--粉色.is-plain {
+    color: #FF60AF;
+    background: #FFECF5;
+    border-color: #FFC1E0;
+}
+
+    .el-button--粉色.is-plain:focus, .el-button--粉色.is-plain:hover {
+        background: #FF60AF;
+        border-color: #FF60AF;
+        color: #FFF;
+    }
+/*青色按钮*/
+.el-button--青色 {
+    color: #FFF;
+    background-color: #305e81;
+    border-color: #305e81;
+}
+
+    .el-button--青色:focus, .el-button--青色:hover {
+        background: #305e81bf;
+        border-color: #305e81bf;
+        color: #FFF;
+    }
+
+    .el-button--青色.is-plain {
+        color: #305e81;
+        background: #305e812b;
+        border-color: #305e8180;
+    }
+
+        .el-button--青色.is-plain:focus, .el-button--青色.is-plain:hover {
+            background: #305e81;
+            border-color: #305e81;
+            color: #FFF;
+        }
+
+
+
+
+
+.el-link--紫色.el-link--inner {
+    color: #9709ef;
+}

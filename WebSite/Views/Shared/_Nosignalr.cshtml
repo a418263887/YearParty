@@ -1,0 +1,621 @@
+@using WebSite
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>新云报</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link href="~/Plugin/layuimini/css/public.css?v=@DateTime.Now" rel="stylesheet" />
+
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/Plugin/adminlte-2.4.3/dist/css/AdminLTE.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+
+    <link rel="stylesheet" href="~/Plugin/adminlte-2.4.3/dist/css/skins/_all-skins.css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="~/Content/css/common.css" rel="stylesheet" />
+    <link href="~/Content/css/ace.css" rel="stylesheet" />
+    <link href="~/Plugin/layui/css/layui.css" rel="stylesheet" />
+
+    <!-- jQuery 3 -->
+    <!--  <script src="/Plugin/adminlte-2.4.3/bower_components/jquery/dist/jquery.min.js"></script>-->
+    <!-- jQuery  -->
+    <script src="~/Plugin/jquery/jquery-1.9.1.min.js"></script>
+    <script src="/Plugin/layui/layui.js"></script>
+    <script src="~/Plugin/My97DatePicker/WdatePicker.js"></script>
+    <script src="http://danml.com/js/download2.js"></script>
+    <script src="~/Plugin/vue-2.7.10.js"></script>
+    <script src="/Plugin/axios-0.19.2.js"></script>
+    @*<link href="~/Plugin/element-ui/index.css" rel="stylesheet" />*@
+    <script src="~/Plugin/element-ui/index.js"></script>
+    <link rel="stylesheet" href="~/Plugin/element-ui/index.css">
+    @*<script src="~/Plugin/fontawesome/js/all.min.js"></script>*@
+    <link rel="stylesheet" href="/Plugin/fontawesome/css/all.min.css">
+    @*<link rel="stylesheet" href="/Plugin/fontawesome/css/fontawesome.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/solid.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/brands.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/v5-font-face.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/v4-font-face.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/v4-shims.min.css">*@
+    <link rel="stylesheet" href="/Plugin/Ezoug.css">
+    <!--JS端SignalR 客户端-->
+    <script>
+  
+
+    </script>
+    @*<script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/SignalRHelper.js"></script>*@
+
+
+    <style>
+        legend {
+            display: block;
+            width: auto;
+            padding: 0;
+            margin-bottom: initial;
+            font-size: initial;
+            line-height: inherit;
+            color: #333;
+            border: 0;
+            border-bottom: initial;
+        }
+
+        .text-left {
+            text-align: left !important;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .text-right {
+            text-align: right !important;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        .red {
+            color: orangered !important;
+        }
+
+        .white {
+            color: white !important
+        }
+
+        .blue {
+            color: dodgerblue !important
+        }
+
+        .green {
+            color: forestgreen !important
+        }
+
+        .orange {
+            color: darkorange !important
+        }
+
+        .gray {
+            color: #999 !important
+        }
+
+        .gold {
+            color: #fffd52 !important
+        }
+
+        .back-gray {
+            background-color: #808080 !important
+        }
+
+        .live-btn {
+            cursor: pointer;
+            /*iphone的动态元素绑定点击事件  要添加这个样式才能生效*/
+        }
+
+        .actions button:not(:first-child) {
+            margin-left: 30px !important;
+        }
+        /*列表查询条件样式*/
+        .condition > .input-group {
+            width: 19%;
+            padding: 4px 20px 4px 0px;
+        }
+
+        .condition div {
+            padding: 4px 0px 4px 0px;
+        }
+
+        a {
+            color: #3c8dbc;
+        }
+
+        .popover {
+            max-width: 800px !important;
+        }
+
+        .p-info {
+            font-size: 0.8em !important;
+            color: cornflowerblue !important;
+        }
+        /*列表查询条件样式*/
+        .querycondition > .search-item {
+            padding: 4px;
+            display: inline-flex;
+        }
+        /*列表查询条件样式*/
+        .querycondition > .search-item2 {
+            width: 30%;
+            padding: 4px;
+            display: inline-flex;
+        }
+
+        .search-item > .search-title {
+            flex: 3;
+            display: inline-block
+        }
+
+        .search-item > .search-input {
+            flex: 5;
+            display: inline-block;
+            width: 100px;
+        }
+
+        .search-item2 > .search-title {
+            flex: 3;
+            display: inline-block
+        }
+
+        .search-item2 > .search-input {
+            flex: 5;
+            display: inline-block
+        }
+    </style>
+    <style>
+        .el-table__body .el-button--mini {
+            padding: 3px 6px;
+            margin-left: 2px !important
+        }
+
+        .el-button--mini {
+            padding: 5px 8px;
+            margin-left: 2px !important
+        }
+
+        .el-iframe {
+            background-color: white;
+            padding: 20px;
+        }
+
+        .table-search-fieldset .el-input {
+            margin-bottom: 15px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex2 {
+            flex: 1;
+        }
+
+        .flex3 {
+            flex: 1;
+        }
+
+        .flex4 {
+            flex: 1;
+        }
+
+        .flex5 {
+            flex: 1;
+        }
+
+        .flex6 {
+            flex: 1;
+        }
+    </style>
+
+
+
+
+    <!--html导出为excel-->
+    <script src="/Plugin/xlsx.full.min.js"></script>
+    <script>
+        function sheet2blob(sheet, sheetName) {
+            sheetName = sheetName || 'sheet1';
+            var workbook = {
+                SheetNames: [sheetName],
+                Sheets: {}
+            };
+            workbook.Sheets[sheetName] = sheet; // 生成excel的配置项
+
+            var wopts = {
+                bookType: 'xlsx', // 要生成的文件类型
+                bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+                type: 'binary'
+            };
+            var wbout = XLSX.write(workbook, wopts);
+            var blob = new Blob([s2ab(wbout)], {
+                type: "application/octet-stream"
+            }); // 字符串转ArrayBuffer
+            function s2ab(s) {
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+            }
+            return blob;
+        }
+
+        function openDownloadDialog(url, saveName) {
+
+            if (navigator.msSaveBlob) {
+                return navigator.msSaveBlob(url, saveName);
+            } else {
+                if (typeof url == 'object' && url instanceof Blob) {
+                    url = URL.createObjectURL(url); // 创建blob地址
+                }
+                var aLink = document.createElement('a');
+                aLink.href = url;
+                aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+                var event;
+                if (window.MouseEvent) event = new MouseEvent('click');
+                else {
+                    event = document.createEvent('MouseEvents');
+                    event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                }
+                aLink.dispatchEvent(event);
+            }
+
+
+        }
+    </script>
+
+    <script>
+
+        Vue.prototype.subLen = function (str, len) {
+            if (str == null)
+                return null;
+            if (typeof (len) == "undefined") {
+                len = 20;
+            }
+            if (str.length > len) {
+                return str.substring(0, len - 1) + "..."
+            } else {
+                return str
+            }
+        }
+        Vue.prototype.dateStr = function (str) {
+            if (str == null)
+                return null;
+            if (str.length < 10)
+                return str
+            return str.substr(0, 10);
+        }
+        Vue.prototype.toFixed = function (number) {
+            if (number == null)
+                return 0;
+            if (typeof (number) == "undefined") {
+                return 0
+            }
+
+            return number.toFixed(2);
+        }
+        Vue.prototype.dateDiff = function (val1, val2, t) {
+            try {
+                if (typeof (val2) == "undefined") {
+                    val2 = new Date();
+                }
+                if (typeof val1 == "string") {
+                    val1 = new Date(val1.replace(/-/g, '/'));
+                }
+                if (typeof val2 == "string") {
+                    val2 = new Date(val2.replace(/-/g, '/'));
+                }
+                var seconds = (val1.getTime() - val2.getTime()) / 1000;//时间差的秒数
+
+                if (typeof (t) == "undefined") {
+                    t = 2;
+                }
+
+                if (t == 1) {
+                    return seconds;
+                }
+                if (t == 2) {
+                    return seconds * 1.0 / 60;
+                }
+                if (t == 3) {
+                    return seconds * 1.0 / 3600;
+                }
+                if (t == 4) {
+                    return seconds * 1.0 / (3600 * 24);
+                }
+            } catch (ex) {
+                console.log(ex);
+            }
+            return 1000;
+        }
+        Vue.prototype.$Gzqxyz = function (urlParam, callback) {
+            var next = false;
+            var that = this;
+            $.ajax({
+                url: urlParam,
+                type: 'POST',
+                async: false,
+                success: function (xhr) {
+                    if (xhr.Code == 1) {
+                        next = true;
+                    } else {
+                        that.$alert(xhr.Msg, '提示', { confirmButtonText: '确定' });
+                        return;
+                    }
+                }
+            });
+
+            if (next) {
+                callback(next);
+            }
+        };
+
+    </script>
+
+    <script type="text/html" id="rowBar">
+        <a class="layui-btn layui-btn-primary  layui-btn-xs" lay-event="info">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <script type="text/html" id="rowBar2">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="info">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="copy">复制</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <script type="text/html" id="rowBar3">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+
+
+</head>
+
+<body class="hold-transition  sidebar-mini fixed">
+
+
+    <!-- Main content -->
+    <section class="content" style="padding:0px">
+
+
+        @RenderBody()
+
+
+
+    </section>
+
+
+
+    <!-- Bootstrap 3.3.7 -->
+    @*<script src="/Plugin/adminlte-2.4.3/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="/Plugin/adminlte-2.4.3/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="/Plugin/adminlte-2.4.3/bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js"></script>*@
+
+    <!-- SlimScroll -->
+    <!--<script src="/Plugin/adminlte-2.4.3/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>-->
+    <!-- FastClick -->
+    <!--<script src="/Plugin/adminlte-2.4.3/bower_components/fastclick/lib/fastclick.js"></script>-->
+
+    <!-- AdminLTE App -->
+    <script src="/Plugin/adminlte-2.4.3/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    @*<script src="/Plugin/adminlte-2.4.3/dist/js/demo.js"></script>*@
+
+
+
+
+    <!-- page script -->
+    <script type="text/javascript">
+
+        //加载弹出层
+        layui.use(['form', 'element'],
+            function () {
+                layer = layui.layer;
+                element = layui.element;
+            });
+
+
+        $('.ajax').click(function () {
+            $.ajax({
+                url: '#', success: function (result) {
+                    $('.ajax-content').html('<hr>Ajax Request Completed !')
+                }
+            })
+        })
+        var getQueryString = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var refreshCache = function (param) {
+            var url = '@Url.Action("ClearByPrefix", "CacheManager",new {area="MMC"})';
+            var loading = layer.msg("提交中", { icon: 16, time: 9999 })
+            $.post(url, { pattern: param }, function (xhr) {
+                layer.msg("操作成功")
+            }).error(function () { layer.alert("操作异常") }).complete(function () { layer.close(loading) })
+        }
+
+    </script>
+
+
+    <!-- page script -->
+    <script type="text/javascript">
+
+        //加载弹出层
+        layui.use(['form', 'element'],
+            function () {
+                layer = layui.layer;
+                element = layui.element;
+            });
+    </script>
+    <script>
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+
+
+        $(function () {
+            //$('.datepicker').datepicker({
+            //    format: 'yyyy-mm-dd',
+            //    weekStart: 1,
+            //    autoclose: true,
+            //    language: 'zh-CN',
+            //    clearBtn: true,
+            //    forceParse: false,
+            //    todayHighlight: true,
+            //    todayBtn: "linked"
+            //});
+            $('.datepicker').click(function () {
+                WdatePicker({
+                    dateFmt: 'yyyy-MM-dd', el: this, onpicked: function (dp) {
+                        if ("undefined" != typeof app && "undefined" != typeof Vue) {
+                            var pickerValue = dp.cal.getNewDateStr();
+                            var name = dp.el.getAttribute("name")
+                            Vue.set(app.$data, name, pickerValue)
+                        }
+                    },
+                    firstDayOfWeek: 1
+                })
+            })
+
+            $(".timepicker").click(function () {
+                WdatePicker({
+                    dateFmt: 'HH:mm', el: this, onpicked: function (dp) {
+                        if ("undefined" != typeof app && "undefined" != typeof Vue) {
+                            var pickerValue = dp.cal.getNewDateStr();
+                            var name = dp.el.getAttribute("name")
+                            Vue.set(app.$data, name, pickerValue)
+                        }
+                    }
+
+                })
+            })
+
+            $('.datetimepicker').click(function () {
+                WdatePicker({
+                    dateFmt: 'yyyy-MM-dd HH:mm', el: this, onpicked: function (dp) {
+                        if ("undefined" != typeof app && "undefined" != typeof Vue) {
+                            var pickerValue = dp.cal.getNewDateStr();
+                            var name = dp.el.getAttribute("name")
+                            Vue.set(app.$data, name, pickerValue)
+                        }
+                    },
+                    firstDayOfWeek: 1
+                })
+            })
+
+            $(".paginate_button:not(.disabled):not(.current)").click(function () {
+                var load = layer.msg('提交中...', { icon: 16, time: 36000, shade: 0.3 });
+            })
+
+            $("input[name='FromCity'],input[name='ToCity'],input[name='Carrier'],input[name='Cabin']").keyup(function () {
+                $(this).val($(this).val().toUpperCase())
+            })
+            //style="text-transform: uppercase;"
+            //$("input[name='FromCity'],input[name='ToCity'],input[name='Carrier'],input[name='Cabin']").css("text-transform", "uppercase")
+        })
+    </script>
+
+
+    <!--动态插件-->
+    <script type="text/javascript">
+            (function ($) {
+                $.msg = function (msg) {
+                    layer.msg(msg);
+
+                }
+                $.alert = function (msg) {
+                    layer.alert(msg)
+                }
+                $.doPost = function (url, data, callBack) {
+                    var loading = layer.msg("提交中", { icon: 16, time: 9999999 });
+                    return $.post(url, data).done(callBack).error(function () { $.alert("提交异常") }).complete(function () { layer.close(loading) })
+                }
+
+                $.isWeiXin = function () {
+                    //window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
+                    var ua = window.navigator.userAgent.toLowerCase();
+                    //通过正则表达式匹配ua中是否含有MicroMessenger字符串
+                    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                $.client = function () {
+                    if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) { //判断是否是iOS
+                        return "ios";
+                    }
+                    if (navigator.userAgent.match(/android/i)) { //判断是否是Android
+                        return "android";
+                    }
+                }
+
+
+
+
+
+            })($)
+
+        $(function () {
+            $(".temp").click(function () {
+                $.msg("即将上线，敬请期待！");
+                return false;
+            })
+            $(".layloading").click(function () {
+                var index = layer.load(1, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+            })
+        })
+    </script>
+
+</body>
+
+
+
+
+
+</html>

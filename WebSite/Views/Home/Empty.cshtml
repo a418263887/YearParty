@@ -1,0 +1,27 @@
+﻿<h3 style="text-align:center;margin-top:200px">您无权访问此系统 请咨询管理员 <a class="login-out" href="javascript:;">退出</a></h3>
+
+
+
+<script>
+
+
+    $(function(){
+
+        $('.login-out').on("click", function () {
+
+            $.post('@Url.Action("Loginout")', {}, function (xhr) {
+
+                if (xhr.Code == 1) {
+                    layer.msg("跳转中...",{icont:16,time:999999})
+                    var oaapi = '@Html.Raw(ViewBag.oaapi)';
+                    window.location = oaapi + '/user/logout?channel=1001&redirect=' + location.origin + '/home/authback'
+
+                } else {
+                    layer.alert("退出异常");
+                }
+            })
+
+        });
+
+    })
+</script>

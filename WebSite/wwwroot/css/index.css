@@ -1,0 +1,411 @@
+﻿/**查询条件样式**/
+.el-header {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    margin-top:15px;
+}
+
+.el-main {
+    display: block;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    flex-basis: auto;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 10px 20px 10px 20px;
+}
+
+.topmain {
+    border-top: 3px solid #e7e7e7;
+}
+
+.el-form-item {
+    height: 30px;
+    margin-right:20px;
+    margin-bottom:10px;
+    line-height: 30px;  
+    display:inline-block; 
+}
+
+.el-form-item__label { 
+    height: 30px ;   
+    width:100px !important;
+    text-align:right;
+    line-height: 30px;
+    margin-right: -1px;
+}
+
+.el-form-item__content {
+    height: 30px;
+    width: 160px !important;
+    margin-left: 100px !important;
+    line-height: 30px;
+}
+
+.el-date-editor {
+    height: 30px !important;
+    width: 160px !important;
+    line-height: 30px;
+}
+
+.el-select {
+    display: inline-block;
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+}
+
+.el-input .el-input__inner {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 0px;
+}
+
+.el-input__icon {
+    height: 30px;
+    line-height: 30px;
+}
+
+
+.datepicker {
+    padding: 0px !important;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    direction: ltr;
+}
+
+
+.el-button {
+    display: inline-block;
+    height: 30px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 0px;
+}
+/*****************列表页码样式修改*********************/
+.el-pagination {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.el-pagination__total {
+    margin-left: 20px !important;
+}
+
+.h40 {
+    height: 40px;
+}
+
+.w80 {
+    width: 80px;
+}
+
+.w100 {
+    width: 100px;
+}
+
+.w120 {
+    width: 120px;
+}
+
+.w150 {
+    width: 150px;
+}
+
+.w160 {
+    width: 160px;
+}
+
+.w170 {
+    width: 170px;
+}
+
+.w180 {
+    width: 180px;
+}
+
+.w190 {
+    width: 190px;
+}
+
+.w200 {
+    width: 200px;
+}
+
+.hand {
+    cursor: pointer;
+}
+/**表格样式**/
+.el-table__header > thead > tr > th {
+    background-color: #e7e7e7 !important;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.indianred {
+    color: indianred;
+}
+
+.blue {
+    color: blue;
+}
+
+.brown {
+    color: brown;
+}
+
+.blueviolet {
+    color: blueviolet;
+}
+
+.goldenrod {
+    color: goldenrod;
+}
+
+.midnightblue {
+    color: midnightblue;
+}
+
+.table-btns {
+    height: 20px;
+    line-height: 20px !important;
+    width: 40px;
+    margin-left: 2px;
+    cursor: pointer;
+    border: 1px solid #fff;
+}
+
+    .table-btns:hover {
+        color: brown;
+        border: 1px solid brown;
+    }
+
+.border-green {
+    color: green;
+}
+
+.border-red {
+    color: red;
+}
+
+.border-indianred {
+    color: indianred;
+}
+
+.border-blue {
+    color: blue;
+}
+
+.border-brown {
+    color: brown;
+}
+
+.border-blueviolet {
+    color: blueviolet;
+}
+
+.border-goldenrod {
+    color: goldenrod;
+}
+
+.border-default {
+    color: #02A7F0;
+}
+
+.up-file {
+    height: 30px;
+    line-height: 30px;
+    margin-left: 10px;
+}
+/***弹出层***/
+.el-dialog > .el-dialog__header {
+    padding: 10px 20px 10px !important;
+    background-color: #e7e7e7 !important;
+}
+
+.el-dialog > .el-dialog__body {
+    padding: 10px 20px 10px !important;
+}
+
+    .el-dialog > .el-dialog__body > .dialog-footer {
+        text-align: center;
+    }
+
+        .el-dialog > .el-dialog__body > .dialog-footer > .el-button--info {
+            color: #3c8dbc !important;
+            background-color: #fff !important;
+            border: 1px solid #3c8dbc !important;
+        }
+
+        .el-dialog > .el-dialog__body > .dialog-footer > .el-button--primary {
+            color: #fff !important;
+            background-color: #3c8dbc !important;
+            border: 1px solid #3c8dbc !important;
+        }
+
+.el-dialog > .el-dialog__header > .el-dialog__headerbtn {
+    top: 15px !important;
+}
+
+.el-message-box > .el-message-box__btns > .el-button--default {
+    color: #3c8dbc;
+}
+
+.el-message-box > .el-message-box__btns > .el-button--primary {
+    color: #fff;
+}
+.appFrom {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-item {
+    float: left;
+    height: 30px;
+    padding: 5px 23px !important;
+    margin-left: 20px;
+    background-color: #409EFF !important;
+}
+
+
+.bg-black > textarea {
+    background-color: #000000;
+    color: #00ffff;
+}
+
+.template {
+    border-top: 3px solid #e7e7e7;
+}
+
+.current-row > td {
+    background-color: #fff !important
+}
+
+.form {
+    width: 100%;
+    height: 98%;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: static !important;
+}
+
+.form-item-name {
+    float: left;
+    width: 120px !important;
+    margin-left: 10px;
+    height: 30px !important;
+    line-height: 30px;
+    margin-right: -1px;
+    text-align: right;
+}
+
+
+.form-item-value {
+    margin-left: 10px;
+    width: 120px !important;
+    height: 30px !important;
+    line-height: 30px;
+    text-align: left;
+    float: left;
+}
+
+
+.el-icon {
+    cursor: pointer !important;
+}
+
+
+.el-table div > table > thead > tr > th {
+    background-color: #F8F8F8 !important;
+}
+
+    .el-table div > table > thead > tr > th > .cell {
+        background-color: #F8F8F8 !important;
+    }
+
+        .el-table div > table > thead > tr > th > .cell > div {
+        }
+
+.el-table div > table > thead > tr > .is-left {
+    background-color: #fff !important;
+}
+
+    .el-table div > table > thead > tr > .is-left > .cell {
+        background-color: #fff !important;
+    }
+
+.x-table {
+    width: 100%;
+    background-color: #fff;
+}
+
+    .x-table > .x-table-thead > tr > th {
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #F8F8F8 !important;
+    }
+
+    .x-table > .x-table-thead > tr > .left {
+        height: 30px;
+        line-height: 30px;
+        text-align: left !important;
+    }
+
+    .x-table > .x-table-tbody > .x-table-tbody-head > th {
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #F8F8F8 !important;
+    }
+
+    .x-table > .x-table-tbody > .x-table-tbody-head > .left {
+        height: 30px;
+        line-height: 30px;
+        text-align: left !important;
+    }
+
+    .x-table > .x-table-tbody > tr > td {
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #eee;
+    }
+
+    .x-table > .x-table-tbody > tr > .left {
+        height: 30px;
+        line-height: 30px;
+        text-align: left !important;
+    }
+
+.el-icon {
+    cursor: pointer !important;
+}
+
+.el-table div > table > thead > tr > th {
+    background-color: #F8F8F8 !important;
+}
+
+    .el-table div > table > thead > tr > th > .cell {
+        background-color: #F8F8F8 !important;
+    }
+
+.PurchaseData div > table > thead > tr > .is-left {
+    background-color: #fff !important;
+}
+
+    .PurchaseData div > table > thead > tr > .is-left > .cell {
+        background-color: #fff !important;
+    }
+
