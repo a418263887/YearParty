@@ -7,7 +7,9 @@ using Domain.Model.AjaxModel;
 using Domain.Model.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net.WebSockets;
+using System.Runtime.CompilerServices;
 using Util.Ext;
 using WebSite.Filters;
 
@@ -53,11 +55,10 @@ namespace WebSite.Controllers
             //ViewBag.oaapi = "http://localhost:56110";
             return View();
         }
-
-        public ActionResult AjaxLogin()
+        public ActionResult AjaxLogin(string uid)
         {
 
-            string userid = Request.Form["uid"];
+            string userid = uid;
 
 
 
@@ -80,8 +81,10 @@ namespace WebSite.Controllers
                         var token = JWTHelper.GetJWT(userdata);
                         HttpContext.Session.SetString(key, token);
                         Response.Cookies.Append(key, token, new CookieOptions() { Expires = DateTime.Now.AddDays(7), HttpOnly = true });
-
-                        return new RedirectResult("/home/index");
+                        //return new ContentResult() { Content = "<script>window.top.location.href='/Home/Index';</script>", ContentType = "text/html" };
+                        result.Code = 1;
+                        result.Info = "/home/index";
+                        //return new RedirectResult("/home/index");
                         //记住我  通过jwt cookie实现  默认有效期30天
 
                     }
@@ -93,8 +96,8 @@ namespace WebSite.Controllers
                         var token = JWTHelper.GetJWT(re);
                         HttpContext.Session.SetString(key, token);
                         Response.Cookies.Append(key, token, new CookieOptions() { Expires = DateTime.Now.AddDays(7), HttpOnly = true });
-                        return new RedirectResult("/home/index");
-
+                        result.Code = 1;
+                        result.Info = "/home/index";
                     }
                 }
                 else

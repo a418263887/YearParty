@@ -1,0 +1,674 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta charset="utf-8" />
+    <title>逸鸣惊人晚会</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" lang="zh-cn" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- basic styles -->
+    <link href="~/Plugin/bootstrap3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Plugin/font/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/ace.min.css" rel="stylesheet" />
+    <script src="~/Plugin/vue-2.7.10.js"></script>
+    <script src="/Plugin/axios-0.19.2.js"></script>
+    @*<link href="~/Plugin/element-ui/index.css" rel="stylesheet" />*@
+    <script src="~/Plugin/element-ui/index.js"></script>
+    <link rel="stylesheet" href="~/Plugin/element-ui/index.css">
+
+    <!--[if lt IE 9]>
+    <script src="~/plugin/assets/js/html5shiv.js"></script>
+    <script src="~/plugin/assets/js/respond.min.js"></script>
+    <![endif]-->
+    @*<script>
+            var oaapi = '@Html.Raw(ViewBag.oaapi)';
+            location.href = oaapi + '/user/auth?channel=1001&redirect=' + location.origin + '/home/AuthBack'
+        </script>*@
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <!-- svg -->
+    @*<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-leafs">
+            <defs>
+                <filter id="a" x="0" y="11.42" width="141.121" height="116.457" filterUnits="userSpaceOnUse">
+                    <feOffset input="SourceAlpha" />
+                    <feGaussianBlur stdDeviation="2" result="b" />
+                    <feFlood flood-opacity="0.102" />
+                    <feComposite operator="in" in2="b" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+                <filter id="c" x="21.622" y="0" width="133.642" height="128.93" filterUnits="userSpaceOnUse">
+                    <feOffset input="SourceAlpha" />
+                    <feGaussianBlur stdDeviation="5" result="d" />
+                    <feFlood flood-opacity="0.102" />
+                    <feComposite operator="in" in2="d" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+            </defs>
+            <g transform="translate(-744.034 -593.436)" id="leafs">
+                <path d="M863.5,421.5s8.259,5.707,15.234,25.935" transform="translate(156.156 66.187) rotate(16)" fill="none" stroke="#2f811e" stroke-linecap="round" stroke-width="0.4" />
+                <g transform="matrix(1, 0, 0, 1, 744.03, 593.44)" filter="url(#a)">
+                    <path d="M902.99,490.315s-43.333-18.667-50.49-50.667,10.49-31.667,10.49-31.667A314.915,314.915,0,0,1,895.5,411c16.5,2.5,69.5,37.5,81,70.5,3.829,10.989,7.49,22.815-7.176,29.815S902.99,490.315,902.99,490.315Z" transform="translate(-844.79 -390.56)" fill="var(--green-3)" />
+                </g>
+                <path d="M863.5,421.5s12.557,3.337,25.522,21.57" transform="translate(355.423 -110.67) rotate(32)" fill="none" stroke="#2c7f1c" stroke-linecap="round" stroke-width="0.4" />
+                <g transform="matrix(1, 0, 0, 1, 744.03, 593.44)" filter="url(#c)">
+                    <path d="M906.186,482.446A113.239,113.239,0,0,1,885.911,470c-5.977-4.556-11.973-10.782-16.832-16.173-12.146-13.478-10.038-42.395-5.407-45.119s27.019,5.924,27.019,5.924,30.8,14.016,39.021,25.114c16.177,21.847,23.864,43.4,14.867,49.079S908.19,483.261,906.186,482.446Z" transform="translate(-701.6 -564.26) rotate(12.09)" fill="var(--green-4)" />
+                </g>
+            </g>
+        </svg>*@
+    <!-- /svg -->
+    <!-- app -->
+    <div id="app" class="app">
+        <!-- leafs -->
+        <div class="leafs">
+            <div class="leaf leaf--1">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="155.264" height="145.312" viewBox="0 0 155.264 145.312">
+                    <use xlink:href="#leafs" />
+                </svg>
+            </div>
+            <div class="leaf leaf--2">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="155.264" height="145.312" viewBox="0 0 155.264 145.312">
+                    <use xlink:href="#leafs" />
+                </svg>
+            </div>
+            <div class="leaf leaf--3">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="155.264" height="145.312" viewBox="0 0 155.264 145.312">
+                    <use xlink:href="#leafs" />
+                </svg>
+            </div>
+        </div>
+        <!-- /leafs -->
+        <!-- first-screen -->
+        <div class="screen first-screen">
+            <p class="number">第一届</p>
+            <h1 class="heading">逸鸣惊人</h1>
+            <p class="description">Live秀时尚年会 男神女神投票</p>
+            <button class="btn-circle btn-pTSecond">&rarr;</button>
+        </div>
+        <!-- /first-screen -->
+        <!-- second-screen -->
+        <div class="screen second-screen">
+            <button class="btn-circle btn-pTFirst">&larr;</button>
+            <h1 class="heading">登录投票</h1>
+            <form class="form">
+                <div class="form__field">
+                    <input type="text" id="login-uid" class="form__input" v-model="uid" placeholder="工号" />
+
+                </div>
+
+                <button id="btn-login" class="btn-words btn-form" @@click="btblogin">登录</button>
+            </form>
+        </div>
+        <!-- /second-screen -->
+        <!-- third-screen -->
+        <!-- /third-screen -->
+    </div>
+    <!-- /app -->
+    @*<a href="http://www.bootstrapmb.com" class="abs-site-link" rel="nofollow noreferrer" target="_blank">abs/designs/d11-plant-app-sign-up-ui</a>*@
+    <!-- partial -->
+    <script src="~/Plugin/jquery/jquery-1.9.1.min.js"></script>
+    <script src="~/Plugin/layui/layui.all.js"></script>
+
+
+    <script type="text/javascript">
+        if ("ontouchend" in document) document.write("<script src='/Plugin/jquery/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script>
+
+
+
+    // Variables
+    const app = document.querySelector(".app");
+
+        const pTSecondButton = document.querySelector(".btn-pTSecond");
+
+
+
+        // pTSecondButton Events
+        /* =============================================================================================== */
+        pTSecondButton.addEventListener("mouseenter", () => {
+            app.classList.add("on-btn-pTSecond");
+        })
+
+        pTSecondButton.addEventListener("focus", () => {
+            app.classList.add("on-btn-pTSecond");
+        })
+
+        pTSecondButton.addEventListener("mouseleave", () => {
+            app.classList.remove("on-btn-pTSecond");
+        })
+
+        pTSecondButton.addEventListener("blur", () => {
+            app.classList.remove("on-btn-pTSecond");
+        })
+
+        pTSecondButton.addEventListener("click", () => {
+            app.classList.add("second-screen-opened");
+            app.classList.remove("on-btn-pTSecond");
+        })
+
+
+
+   var appvue = new Vue({
+       el: "#app",
+       data: {
+          uid:'',
+
+
+       },
+       created() {
+           /*this.reloadData();*/
+           //this.getNowTime();
+       }
+               , methods: {
+                   btblogin: function () {
+                        var url = "@Url.Action("AjaxLogin")"+"?uid="+this.uid;
+                       $.post(url,
+                           {  },
+                           function (xhr) {
+
+                               if (xhr.Code == 1) {
+                                   location.href = '/Home/error'; // 跳转到首页
+                               } else {
+                                   that.$alert(xhr.Msg, '提示', {
+                                       confirmButtonText: '确定'
+                                   });
+                               }
+                           }).error(function () {
+                               layer.alert('删除出错');
+                           });
+                   },
+
+
+       }
+
+   });
+    </script>
+    <style>
+        @@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+
+        /* default */
+        /* =============================================================================================== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            font-family: 'Merriweather';
+            background: url('/bg.jpg');
+            background-size: cover;
+        }
+
+        button {
+            border: none;
+            color: inherit;
+            background: transparent;
+            cursor: pointer;
+        }
+
+            button::-moz-focus-inner {
+                border: 0;
+            }
+
+        /* app */
+        /* =============================================================================================== */
+        .app {
+            --light-1: hsl(114, 31%, 93%);
+            --light-2: hsl(114, 31%, 96%);
+            --green-1: hsl(130, 46%, 38%);
+            --green-2: hsl(130, 50%, 50%);
+            --green-3: hsl(131, 42%, 42%);
+            --green-4: hsl(130, 45%, 45%);
+            --gray-1: hsl(0, 0%, 50%);
+            --gray-2: hsl(0, 0%, 90%);
+            --dark-1: hsl(0, 0%, 8%);
+            --dark-2: hsl(0, 0%, 20%);
+            --gradient-1: linear-gradient(to right bottom, var(--green-2), var(--green-1));
+            --gradient-2: linear-gradient(to right bottom, var(--light-2), var(--light-1));
+            width: 30rem;
+            height: 46rem;
+            border-radius: 2rem;
+            box-shadow: 0 3rem 4rem .4rem hsla(0, 0%, 0%, .1), 0 1.5rem 2.4rem -1rem hsla(0, 0%, 0%, .06), 0 0 2.4rem hsla(0, 0%, 0%, .06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* leafs */
+        /* =============================================================================================== */
+        .svg-leafs {
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            visibility: hidden;
+        }
+
+        .leaf {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 4;
+            width: 20rem;
+            pointer-events: none;
+            transition: .3s;
+        }
+
+        .leaf--1 {
+            right: -3rem;
+            bottom: -11.5rem;
+            transform: rotate(90deg);
+        }
+
+        .leaf--2 {
+            right: -2rem;
+            bottom: -8rem;
+            transform: rotate(55deg);
+        }
+
+        .leaf--3 {
+            right: -.5rem;
+            bottom: -10.5rem;
+            transform: rotate(15deg);
+        }
+
+        /* Other */
+        /* =============================================================================================== */
+        .number {
+            width: 100%;
+            margin-bottom: 2rem;
+            text-align: right;
+        }
+
+        .heading {
+            font-size: 2.6rem;
+            letter-spacing: .2rem;
+            transition: .4s;
+        }
+
+        .description {
+            margin-top: 2rem;
+            line-height: 2;
+        }
+
+        /* screen */
+        /* =============================================================================================== */
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            padding: 2rem;
+            color: var(--light-1);
+            background: transparent;
+        }
+
+        /* first-screen */
+        /* =============================================================================================== */
+        .first-screen {
+            align-items: flex-start;
+            background: var(--gradient-1);
+        }
+
+        /* second-screen */
+        /* =============================================================================================== */
+        .second-screen {
+            color: var(--green-1);
+            left: 100%;
+            z-index: 2;
+        }
+
+            .second-screen .heading {
+                opacity: 0;
+                transform: translate(30px);
+            }
+
+        /* third-screen */
+        /* =============================================================================================== */
+        .third-screen {
+            left: 100%;
+            z-index: 3;
+        }
+
+            .third-screen .heading {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+        /* buttons */
+        /* =============================================================================================== */
+        /* btn-circle */
+        /* ---------------------------------------- */
+        .btn-circle {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 100rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* btn-pTSecond */
+        /* ---------------------------------------- */
+        .btn-pTSecond {
+            margin-top: 2rem;
+            border: 1px solid var(--light-1);
+            transform: scale(.8);
+            transform-origin: left center;
+            transition: .3s;
+        }
+
+            .btn-pTSecond:hover,
+            .btn-pTSecond:focus {
+                transform: scale(1);
+            }
+
+            .btn-pTSecond::before {
+                content: '';
+                width: 100%;
+                height: 100%;
+                border-radius: inherit;
+                position: absolute;
+                background: var(--gradient-2);
+                transform: scale(0);
+                transition: .6s;
+            }
+
+        /* btn-pTFirst */
+        /* ---------------------------------------- */
+        .btn-pTFirst {
+            color: var(--light-1);
+            background: var(--gradient-1);
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+        }
+
+        /* btn-words */
+        /* ---------------------------------------- */
+        .btn-words {
+            width: 100%;
+            font-size: 1.2rem;
+            transition: all .4s, transform 1s .5s;
+        }
+
+        /* btn-form */
+        /* ---------------------------------------- */
+        .btn-form {
+            border-radius: 100rem;
+            margin-top: .4rem;
+            padding: 1rem 0;
+            color: var(--gray-1);
+            background: var(--gray-2);
+            font-weight: bold;
+            z-index: 1;
+        }
+
+            .btn-form::before {
+                content: '✓';
+                position: absolute;
+                transform: scale(0) translateX(-3px);
+                transition: .5s .4ms cubic-bezier(.17, .09, .77, 1.8);
+            }
+
+            .btn-form::after {
+                content: '';
+                width: 100%;
+                height: 100%;
+                border-radius: inherit;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: var(--gradient-1);
+                transform: scale(0);
+                transition: .6s;
+            }
+
+        /* btn-sign-in */
+        /* ---------------------------------------- */
+        .btn-sign-in {
+            color: var(--dark-2);
+        }
+
+        /* form */
+        /* =============================================================================================== */
+        .form {
+            width: 100%;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(2rem);
+        }
+
+        .form__field {
+            width: 100%;
+            height: auto;
+            margin-bottom: 2.2rem;
+            position: relative;
+        }
+
+            .form__field::before,
+            .form__field::after {
+                content: '';
+                width: 0;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transition: .5s;
+            }
+
+            .form__field::before {
+                border-bottom: 1px solid var(--gray-1);
+                opacity: .3;
+            }
+
+            .form__field::after {
+                width: 0;
+                border-bottom: 1px solid var(--green-1);
+            }
+
+            .form__field:focus-within::after {
+                width: 100%;
+            }
+
+        .form__input {
+            width: 100%;
+            border: none;
+            padding-bottom: .8rem;
+            color: var(--dark-1);
+            background: transparent;
+            font-size: 1.2rem;
+        }
+
+        .form__success {
+            position: absolute;
+            left: 50%;
+            bottom: .9rem;
+            font-size: 1.2rem;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(-.4rem);
+            transition: 1s .5s;
+        }
+
+        /* Styles that will be added via JavaScript */
+        /* =============================================================================================== */
+        /* second-screen-opened */
+        /* ---------------------------------------- */
+        .second-screen-opened .leaf {
+            transition: 1s;
+        }
+
+        .second-screen-opened .leaf--1 {
+            right: -8.8rem;
+            bottom: 78%;
+            transform: rotate(5deg);
+        }
+
+        .second-screen-opened .leaf--2 {
+            right: -8.6rem;
+            bottom: -5rem;
+            transform: rotate(80deg);
+        }
+
+        .second-screen-opened .leaf--3 {
+            right: 11rem;
+            bottom: -4.2rem;
+            transform: rotate(180deg);
+        }
+
+        .second-screen-opened .first-screen .heading {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .second-screen-opened .btn-pTSecond::before {
+            border-radius: 0;
+            transform: scale(22);
+        }
+
+        .second-screen-opened .second-screen {
+            left: 0;
+        }
+
+            .second-screen-opened .second-screen .heading {
+                opacity: 1;
+                transform: translate(0);
+                transition: 1s .4s;
+            }
+
+            .second-screen-opened .second-screen .form {
+                opacity: 1;
+                transform: translateY(0);
+                transition: .7s .1s;
+            }
+
+        .second-screen-opened .form__field::before {
+            width: 100%;
+            transition: .8s .3s;
+        }
+
+        /* third-screen-opened  */
+        /* ---------------------------------------- */
+        .third-screen-opened .leaf--1 {
+            right: 10rem;
+            bottom: -8rem;
+            transform: rotate(-10deg);
+        }
+
+        .third-screen-opened .leaf--2 {
+            right: 10rem;
+            bottom: 74%;
+            transform: rotate(90deg);
+        }
+
+        .third-screen-opened .leaf--3 {
+            right: -10.2rem;
+            bottom: 26%;
+            transform: rotate(40deg);
+        }
+
+        .third-screen-opened .second-screen .heading {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .third-screen-opened .btn-form::after {
+            border-radius: 0;
+            transform: scale(22);
+        }
+
+        .third-screen-opened .third-screen {
+            left: 0;
+        }
+
+            .third-screen-opened .third-screen .heading {
+                opacity: 1;
+                transform: translate(0);
+                transition: 1s .4s;
+            }
+
+        /* on-btn-pTSecond */
+        /* ---------------------------------------- */
+        .on-btn-pTSecond .leaf--1 {
+            right: -3rem;
+            bottom: -8.5rem;
+            transform: rotate(97deg);
+        }
+
+        .on-btn-pTSecond .leaf--2 {
+            bottom: -5rem;
+            transform: rotate(52deg);
+        }
+
+        .on-btn-pTSecond .leaf--3 {
+            right: 3rem;
+            bottom: -7.5rem;
+            transform: rotate(5deg);
+        }
+
+        /* .form-ready */
+        /* ---------------------------------------- */
+        .form-ready .btn-form {
+            color: var(--light-1);
+            background: var(--green-2);
+        }
+
+        /* .form-submitted */
+        /* ---------------------------------------- */
+        .form-submitted .btn-form {
+            width: 3.6rem;
+            transform: translateX(-2rem);
+        }
+
+            .form-submitted .btn-form::before {
+                transform: scale(1) translateX(-3px);
+            }
+
+        .form-submitted .form__success {
+            opacity: 1;
+            transform: translateX(.4rem);
+        }
+
+        .form-submitted .btn-sign-in {
+            opacity: 0;
+        }
+
+        /* custom-cursor */
+        /* =============================================================================================== */
+
+
+        .abs-site-link {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            color: hsla(0, 0%, 100%, .6);
+            font-size: 1.6rem;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+    </style>
+</body>
+</html>
