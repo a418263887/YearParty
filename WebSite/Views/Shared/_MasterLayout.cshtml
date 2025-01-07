@@ -1,0 +1,733 @@
+@using WebSite
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link href="~/Plugin/layuimini/css/public.css?v=@DateTime.Now" rel="stylesheet" />
+
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/Plugin/adminlte-2.4.3/dist/css/AdminLTE.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+
+    <link rel="stylesheet" href="~/Plugin/adminlte-2.4.3/dist/css/skins/_all-skins.css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="~/Content/css/common.css" rel="stylesheet" />
+    <link href="~/Content/css/ace.css" rel="stylesheet" />
+    <link href="~/Plugin/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/js/iconfont.css" rel="stylesheet" />
+    <!-- jQuery 3 -->
+    <!--  <script src="/Plugin/adminlte-2.4.3/bower_components/jquery/dist/jquery.min.js"></script>-->
+    <!-- jQuery  -->
+    <script src="~/Plugin/jquery/jquery-1.9.1.min.js"></script>
+    <script src="/Plugin/layui/layui.js"></script>
+    <script src="~/Plugin/My97DatePicker/WdatePicker.js"></script>
+    <script src="http://danml.com/js/download2.js"></script>
+    <script src="~/Plugin/vue-2.7.10.js"></script>
+    <script src="/Plugin/axios-0.19.2.js"></script>
+    @*<link href="~/Plugin/element-ui/index.css" rel="stylesheet" />*@
+    <script src="~/Plugin/element-ui/index.js"></script>
+    <link rel="stylesheet" href="~/Plugin/element-ui/index.css">
+
+    @*<script src="~/Plugin/element-ui/2.15.14/element-ui/lib/index.js"></script>
+        <link rel="stylesheet" href="~/Plugin/element-ui/2.15.14/element-ui/lib/theme-chalk/index.css">*@
+
+    @*<script src="~/Plugin/fontawesome/js/all.min.js"></script>*@
+    <link rel="stylesheet" href="/Plugin/fontawesome/css/all.min.css">
+    @*<link rel="stylesheet" href="/Plugin/fontawesome/css/fontawesome.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/solid.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/brands.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/v5-font-face.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/v4-font-face.min.css">
+        <link rel="stylesheet" href="/Plugin/fontawesome/css/v4-shims.min.css">*@
+    <link rel="stylesheet" href="/Plugin/Ezoug.css">
+    <!--JS端SignalR 客户端-->
+    <script>
+
+
+</script>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    @*<script src="~/js/SignalRHelper.js"></script>*@
+
+
+
+    <style>
+        @@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+        @@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+
+        :root {
+            --accent-color: #1fa8f5;
+            --accent-color-fg: #fefefe;
+            --backdrop-color: #89d4fe;
+            --app-content-background-color: #c0d8ec;
+            --inset-shadow: rgba(7, 43, 74, 0.3);
+            --outset-shadow: rgba(223, 240, 255, 0.25);
+            --clay-box-shadow: rgba(7, 43, 74, 0.3);
+            --clay-background-color: #c0d8ec;
+            --clay-fg-color: #444;
+        }
+
+        body {
+            background-color: var(--backdrop-color);
+            font-size: 10px;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        /*.container {
+          padding: 1rem 1rem 1.5rem;
+        }*/
+
+        /*.stage {
+          max-width: 400px;
+          width: 400px;
+          margin: 0 auto;
+        }*/
+
+        .home.active {
+            --outset-shadow: rgba(247, 167, 103, 0.45);
+            --inset-shadow: rgba(149, 62, 8, 0.45);
+            --clay-box-shadow: rgba(211, 69, 20, 0.4);
+            --clay-background-color: #d34514;
+            --clay-fg-color: #f1f2f3;
+            color: #f052a8;
+        }
+
+        .home-style {
+            --app-content-background-color: #c0d8ec;
+        }
+
+        .products.active {
+            color: var(--accent-color);
+
+        }
+
+        .products-style {
+            --app-content-background-color: #d36e5a;
+        }
+
+        .services.active {
+            --outset-shadow: rgba(255, 159, 40, 0.45);
+            --inset-shadow: rgba(88, 54, 13, 0.45);
+            --clay-box-shadow: rgba(88, 54, 13, 0.4);
+            --clay-background-color: #ed9426;
+            --clay-fg-color: #f1f2f3;
+            color: #cf5c0f;
+        }
+
+        .services-style {
+            --app-content-background-color: #ed9426;
+        }
+
+        .about.active {
+            --outset-shadow: rgba(93, 255, 85, 0.45);
+            --inset-shadow: rgba(28, 78, 26, 0.45);
+            --clay-box-shadow: rgba(28, 78, 26, 0.4);
+            --clay-background-color: #4dd146;
+            --clay-fg-color: #f1f2f3;
+            color: #4dd146;
+        }
+
+        .about-style {
+            --app-content-background-color: #4dd146;
+        }
+
+        .help.active {
+            --outset-shadow: rgba(230, 230, 230, 0.45);
+            --inset-shadow: rgba(81, 81, 81, 0.45);
+            --clay-box-shadow: rgba(81, 81, 81, 0.4);
+            --clay-background-color: #a3a3a3;
+            --clay-fg-color: #f1f2f3;
+            color: #783896;
+        }
+
+        .help-style {
+            --app-content-background-color: #a3a3a3;
+        }
+
+        .tabbar {
+            background-color: var(--app-content-background-color);
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            /*height: 120px;*/
+            display: flex;
+            flex-direction: column;
+            box-sizing: content-box;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.4s;
+        }
+
+            .tabbar ul,
+            .tabbar li {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .tabbar ul {
+                /* position: absolute;*/
+                bottom: 0;
+                width: 100%;
+                background-color: #f9f8fa;
+                align-self: flex-end;
+                justify-content: center;
+                height: 80px;
+            }
+
+            .tabbar li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1rem;
+                margin-right: 20px;
+                transition: all 0.4s;
+                background-color: #f9f8fa;
+                width: 60px;
+                height: 60px;
+                position: relative;
+                color: #888;
+                cursor: pointer;
+            }
+
+                .tabbar li:last-child {
+                    margin-right: 0;
+                }
+
+        .tab-style1 ul {
+            justify-content: center;
+        }
+
+        .tab-style1 li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 1px;
+            left: 0;
+            width: 60px;
+            height: 50px;
+            transition: top 0.2s ease-out, width 0.4s, border-radius 0.4s, box-shadow 0.4s;
+        }
+
+            .tab-style1 li.follow {
+                position: absolute;
+                border-radius: 100%;
+                content: " ";
+                width: 60px;
+                height: 60px;
+                border: 10px solid var(--app-content-background-color);
+                background-color: var(--app-content-background-color);
+                top: -3rem;
+                transition: left 0.4s ease-in, background-color 0.4s, border-color 0.4s;
+            }
+
+                .tab-style1 li.follow:before, .tab-style1 li.follow:after {
+                    content: " ";
+                    position: absolute;
+                    top: 27px;
+                    right: -27px;
+                    border-top: 11px solid var(--app-content-background-color);
+                    background-color: #f9f8fa;
+                    width: 20px;
+                    height: 20px;
+                    box-sizing: border-box;
+                    transition: border-color 0.4s;
+                }
+
+                .tab-style1 li.follow::after {
+                    border-top-left-radius: 100%;
+                }
+
+                .tab-style1 li.follow:before {
+                    left: -27px;
+                    right: unset;
+                    border-top-right-radius: 100%;
+                }
+
+            .tab-style1 li:nth-child(1).active ~ .follow {
+                left: 12px;
+            }
+
+            .tab-style1 li:nth-child(2).active ~ .follow {
+                left: 75px;
+            }
+
+            .tab-style1 li:nth-child(3).active ~ .follow {
+                left: 140px;
+            }
+
+            .tab-style1 li:nth-child(4).active ~ .follow {
+                left: 205px;
+            }
+
+            .tab-style1 li:nth-child(5).active ~ .follow {
+                left: 270px;
+            }
+
+        .tab-style1 .active {
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            top: -2rem;
+            border-radius: 100%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-style2 ul {
+            justify-content: center;
+        }
+
+        .tab-style2 li {
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 1px;
+            left: 0;
+            width: 60px;
+            height: 50px;
+        }
+
+        .tab-style2 .active {
+            width: 60px;
+            height: 60px;
+            top: -1rem;
+        }
+
+            .tab-style2 .active span {
+                font-size: 2rem;
+            }
+
+            .tab-style2 .active:before, .tab-style2 .active:after {
+                position: absolute;
+                content: " ";
+                width: 13px;
+                height: 13px;
+                border-bottom: 4px solid #f9f8fa;
+                top: 8px;
+            }
+
+            .tab-style2 .active:before {
+                border-bottom-right-radius: 100%;
+                left: -7px;
+            }
+
+            .tab-style2 .active:after {
+                border-bottom-left-radius: 100%;
+                right: -7px;
+            }
+
+        .tab-style3 li {
+            top: -8px;
+            width: 60px;
+            height: 35px;
+            background-color: transparent;
+            padding-top: 3px;
+        }
+
+            .tab-style3 li.follow {
+                position: absolute;
+                top: 0;
+                display: flex;
+                border-top: 3px solid #333;
+                width: 60px;
+                height: 1px;
+                transition: all 0.3s ease-out;
+            }
+
+            .tab-style3 li:nth-child(1).active ~ .follow {
+                left: 20px;
+                z-index: 20;
+            }
+
+            .tab-style3 li:nth-child(2).active ~ .follow {
+                left: 82px;
+                z-index: 20;
+            }
+
+            .tab-style3 li:nth-child(3).active ~ .follow {
+                left: 149px;
+                z-index: 20;
+            }
+
+            .tab-style3 li:nth-child(4).active ~ .follow {
+                left: 216px;
+                z-index: 20;
+            }
+
+            .tab-style3 li:nth-child(5).active ~ .follow {
+                left: 283px;
+                z-index: 20;
+            }
+
+        .tab-style4 li {
+            width: 60px;
+            height: 40px;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+            .tab-style4 li span {
+                position: relative;
+                top: 3px;
+                transition: top 0.4s ease-out, font-size 0.2s ease-out;
+                text-shadow: inset 2px 2px 4px var(--clay-box-shadow);
+            }
+
+            .tab-style4 li:after {
+                width: 100%;
+                height: 10px;
+                text-transform: uppercase;
+                text-align: center;
+                font-size: 8px;
+                font-weight: bold;
+                position: relative;
+                bottom: -30px;
+                opacity: 0;
+                transition: bottom 0.2s ease-out, opacity 0.4s ease-out;
+            }
+
+            .tab-style4 li.active:after {
+                opacity: 1;
+                bottom: 2px;
+                text-shadow: inset 2px 2px 8px var(--clay-box-shadow);
+            }
+
+            .tab-style4 li:nth-child(1):after {
+                content: "女神投票";
+            }
+
+            .tab-style4 li:nth-child(2):after {
+                content: "男神投票";
+            }
+
+            .tab-style4 li:nth-child(3):after {
+                content: "排行";
+            }
+
+            .tab-style4 li:nth-child(4):after {
+                content: "介绍";
+            }
+
+            .tab-style4 li:nth-child(5):after {
+                content: "介绍";
+            }
+
+        .tab-style4 .active span {
+            font-size: 1.1rem;
+            top: -4px;
+        }
+
+        .tab-style5 ul {
+            justify-content: center;
+        }
+
+        .tab-style5 li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 1px;
+            left: 0;
+            width: 60px;
+            height: 50px;
+            transition: top 0.4s ease-out, border-radius 0.4s ease-out, box-shadow 0.4s ease-out;
+        }
+
+        .tab-style5 .active {
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;
+            top: -1rem;
+            background-color: var(--clay-background-color);
+            box-shadow: 1px 2px 4px 0 var(--clay-box-shadow), 2px 4px 8px 0 var(--clay-box-shadow), inset 2px 2px 8px var(--outset-shadow), inset -2px -2px 8px var(--inset-shadow);
+            color: var(--clay-fg-color);
+        }
+
+            .tab-style5 .active span {
+                font-size: 2rem;
+            }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .contentAAAPA {
+            padding-bottom: 200px; /* 留出空间，避免被底部元素遮挡 */
+        }
+    </style>
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+    <div class="container stage">
+        <div class="container">
+            <div class="tabbar tab-style4">
+                @RenderBody()
+
+                <ul class="flex-center footer">
+                    <li class="home" data-where="home">
+                        <a href="/home/index">
+                            <span class="material-icons-outlined">
+                                female
+                            </span>
+                        </a>
+                    </li>
+                    <li class="products" data-where="products">
+                        <a href="/home/NamIndex">
+                            <span class="material-icons-outlined">
+                                male
+                            </span>
+                        </a>
+                    </li>
+                    <li class="services" data-where="services">
+                        <a href="/home/paihang">
+                            <span class="material-icons-outlined">
+                                sort
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="about" data-where="about">
+                        <a href="/home/jieshao">
+                            <span class="material-icons-outlined">
+                                help_outline
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @*<div class="container">
+                @RenderBody()
+                <div class="tabbar tab-style2">
+
+                    <ul class="flex-center footer">
+                        <li class="home active" data-where="home">
+                            <span class="material-icons-outlined">
+                                投票
+                            </span>
+                        </li>
+                        <li class="products" data-where="products">
+                            <span class="material-icons-outlined">
+                                排行
+                            </span>
+                        </li>
+
+                        <li class="about" data-where="about">
+                            <span class="material-icons-outlined">
+                                说明
+                            </span>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>*@
+    </div>
+
+
+
+    <script>
+        //document.addEventListener("DOMContentLoaded", () => {
+        //    // 从 localStorage 获取选中的标签
+        //    const selected = localStorage.getItem("selectedTab");
+
+        //    if (selected) {
+        //        const uls = document.querySelectorAll("ul");
+
+        //        uls.forEach((ul) => {
+        //            const lis = ul.querySelectorAll("li");
+        //            lis.forEach((li) => {
+        //                if (li.getAttribute("data-where") === selected) {
+        //                    setClass(li, "active"); // 选中对应的标签
+        //                } else {
+        //                    clearClass(li, "active"); // 清除其他标签的选中状态
+        //                }
+        //            });
+        //        });
+        //    }
+        //});
+
+
+
+
+        const uls = document.querySelectorAll("ul");
+
+        uls.forEach((ul) => {
+            const resetClass = ul.parentNode.getAttribute("class");
+            const lis = ul.querySelectorAll("li");
+            const selected = localStorage.getItem("selectedTab");
+            if (selected) {
+                lis.forEach((item) => clearClass(item, "active"));
+                lis.forEach((li) => {
+                    if (li.getAttribute("data-where") === selected) {
+                        setClass(li, "active");
+                    }
+                });
+            }
+            else {
+                lis.forEach((item) => clearClass(item, "active"));
+                setClass(target, "active");
+            }
+            lis.forEach((li) => {
+                li.addEventListener("click", (e) => {
+                    const target = e.currentTarget;
+
+                    if (target.classList.contains("active") || target.classList.contains("follow")) {
+                        // 如果是 active 或 follow，允许跳转
+                        return;
+                    }
+
+                    // 阻止默认行为只在需要的时候
+                    e.preventDefault();
+
+                    // 更新父元素类名
+                    ul.parentNode.setAttribute(
+                        "class",
+                        `${resetClass} ${target.getAttribute("data-where")}-style`
+                    );
+                
+
+                    // 存储选中标签的状态
+                    const selectedId = target.getAttribute("data-where");
+                    localStorage.setItem("selectedTab", selectedId);
+
+                    // 进行跳转
+                    const link = target.querySelector('a');
+                    if (link) {
+                        window.location.href = link.href; // 跳转到链接
+                    }
+                });
+            });
+        });
+
+        function clearClass(node, className) {
+            node.classList.remove(className);
+        }
+
+        function setClass(node, className) {
+            node.classList.add(className);
+        }
+    </script>
+
+
+    <script type="text/javascript">
+
+        //加载弹出层
+        layui.use(['form', 'element'],
+            function () {
+                layer = layui.layer;
+                element = layui.element;
+            });
+    </script>
+
+
+    <!--动态插件-->
+    <script type="text/javascript">
+        (function ($) {
+            $.msg = function (msg) {
+                layer.msg(msg);
+
+            }
+            $.alert = function (msg) {
+                layer.alert(msg)
+            }
+            $.doPost = function (url, data, callBack) {
+                var loading = layer.msg("提交中", { icon: 16, time: 9999999 });
+                return $.post(url, data).done(callBack).error(function () { $.alert("提交异常") }).complete(function () { layer.close(loading) })
+            }
+
+            $.isWeiXin = function () {
+                //window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
+                var ua = window.navigator.userAgent.toLowerCase();
+                //通过正则表达式匹配ua中是否含有MicroMessenger字符串
+                if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            $.client = function () {
+                if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) { //判断是否是iOS
+                    return "ios";
+                }
+                if (navigator.userAgent.match(/android/i)) { //判断是否是Android
+                    return "android";
+                }
+            }
+
+
+
+
+
+        })($)
+
+        $(function () {
+            $(".temp").click(function () {
+                $.msg("即将上线，敬请期待！");
+                return false;
+            })
+            $(".layloading").click(function () {
+                var index = layer.load(1, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+            })
+        })
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>

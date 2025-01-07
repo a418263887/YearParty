@@ -1,0 +1,421 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>逸鸣惊人晚会</title>
+    <script src="/js/minimasonry.min.js"></script>
+    <link href="~/Plugin/layui/css/layui.css" rel="stylesheet" />
+    <script src="/Plugin/layui/layui.js"></script>
+    <style>
+        .biaoti {
+            font-weight: 900;
+            text-align: center;
+            font-size: 26px;
+            font-family: 'element-icons';
+            color: antiquewhite;
+        }
+
+        .el-button--primary {
+            color: #FFF;
+            background-color: #409EFF;
+            border-color: #409EFF;
+            width: 100%;
+        }
+
+        .container {
+            position: relative;
+            margin: 20px auto 60px auto;
+        }
+
+        .item {
+            position: absolute;
+            height: auto;
+            display: inline-block;
+            /* background: rgba(150, 150, 150, 1); */
+            text-align: center;
+            font-size: 2em;
+            font-weight: white;
+            color: white;
+            line-height: 1.5em;
+            border-radius: 5px;
+            box-shadow: 2px 1px 5px 2px rgb(71 69 69 / 94%);
+            background-image: linear-gradient(135deg, #fff 10%, #fff 100%);
+        }
+
+        .xiaoshuzi {
+            position: absolute;
+            z-index: 98;
+            top: -14px;
+            left: 0;
+            color: #fff;
+            font-size: 1.18rem;
+            line-height: 18px;
+            width: 2.88rem;
+            text-align: center;
+        }
+
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            unicode-bidi: isolate;
+        }
+
+        .Ticonfont {
+            font-family: "Ticonfont" !important;
+            /* font-size: 0.24rem; */
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .default .item .xiaoshuzi .iconH5_shouye_xuanshou_tupian_jiaobiao {
+            position: absolute;
+            top: 0.3rem;
+            left: -10px;
+            font-size: 88px;
+            line-height: 4.18rem;
+            z-index: -1;
+        }
+
+        .item .xiaoshuzi i.Ticonfont {
+            left: -0.12rem;
+            font-size: 1.28rem;
+            line-height: 1.28rem;
+            opacity: .8;
+        }
+
+        .xuanshou_name {
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 10px;
+            color: black;
+        }
+
+        .break1 {
+            word-break: break-all;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            white-space: normal;
+        }
+
+        .xuanshou_name2 {
+            font-size: 12px;
+            line-height: 18px;
+            margin-top: 10px;
+            color: #958888;
+        }
+
+        .break2 {
+            word-break: break-all;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            white-space: normal;
+        }
+
+        .xuanshou_vote {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 3.5rem;
+            margin-bottom: 0.24rem;
+            margin: 5px 0 0;
+            font-size: 1.26rem;
+            color: #B3B3B3;
+        }
+
+        .el-button--tp {
+            color: #FFF;
+            background-color: #5282f0;
+            border-color: #5282f0;
+            width: 90%;
+            margin-bottom: 10px;
+        }
+
+        .el-pagination {
+            white-space: nowrap;
+            /* padding: 2px 5px; */
+            color: #303133;
+            font-weight: 700;
+            padding-top: 26px;
+            padding-bottom: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="contentAAAPA" style="background-color: aliceblue">
+
+    <img src="/bg.jpg">
+    <div id="appp">
+        <div style="background-color: #5282f0; padding: 20px 0px 30px 0px; text-align: center" class="layuimini-container layuimini-main">
+            <el-row style=" text-align: center">
+                <span class="biaoti">2024网逸“时尚LIVE秀”</span>
+            </el-row>
+        </div>
+        <div class="layuimini-container layuimini-main" style="padding: 10px; background-color: aliceblue">
+
+            <el-row>
+                <el-col :span="24">
+                    <span style="color:red"><i class="el-icon-time"></i>报名时间:</span>{{Guize.Bma}}至{{Guize.Bmb}}
+                </el-col>
+
+                <el-row>
+                    <el-col :span="24">
+                        <span style="color:red"><i class="el-icon-time"></i>投票时间:</span>{{Guize.Tpa}}至{{Guize.Tpb}}
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <span style="color:red"><i class="el-icon-warning-outline"></i>投票规则: </span>每个参会成员活动内只能投票4票
+                        <br />
+                        (3票女神1票男神)，可为同一个选手投票1票
+                    </el-col>
+
+                </el-row>
+                <el-row style="text-align:center">
+                    <el-button v-show="Init.IsBaoming==0" type="primary" size="small" @@click="navigateToSignup">在线报名</el-button>
+                </el-row>
+                <el-row style="text-align:center">
+                    <el-button v-show="Init.IsBaoming==1" type="primary" size="small" disabled>已报名</el-button>
+                </el-row>
+        </div>
+        <div class="layuimini-container layuimini-main" style="padding: 10px; background-color: aliceblue">
+            <el-row>
+                <el-input placeholder="请输入姓名或工号" v-model="sousuo" class="input-with-select">
+
+                    <el-button type="primary" slot="append" icon="el-icon-search" @@click="reloadData(1)"></el-button>
+                </el-input>
+            </el-row>
+            <el-row>
+                <div style="text-align:center">
+                    <div style="padding:8px 0px 0px 0px">我的女神票:<span style="color: #f052a8;">{{Init.XX}}</span>&nbsp;我的男神票:<span style="color: rgb(82, 130, 240);">{{Init.XY}}</span></div>
+                </div>
+            </el-row>
+            @*<el-row style="padding-bottom: 80px;">*@
+            <div class="container default section_content">
+                @*///这里是展示*@
+                <div class="item" v-for="data in dataList">
+                    <p class="xiaoshuzi" v-show="data.Sex=='男'"><i class="Ticonfont iconH5_shouye_xuanshou_tupian_jiaobiao" style="color: rgb(82, 130, 240);"></i>男神</p>
+                    <p class="xiaoshuzi" v-show="data.Sex=='女'"><i class="Ticonfont iconH5_shouye_xuanshou_tupian_jiaobiao" style="color: #f052a8;"></i>女神</p>
+                    <el-image style="width: 100%; " :src="data.FilePath" fit="contain" lazy @@load="handleLoad" :preview-src-list="data.FilePathList"></el-image>
+                    <div class="xuanshou_name break1">{{data.Gh}}&nbsp; {{data.Name}}</div>
+                    <div class="xuanshou_name2 break2">{{data.XuanYan}}</div>
+                    <div class="xuanshou_vote"><span style="color: rgb(82, 130, 240);">{{data.Count}}</span> 票</div>
+
+                    <el-row>        <el-button type="tp " size="small" :loading="loading" @@click="tpp(data.Gh,data.Sex)">投票</el-button></el-row>
+                </div>
+
+
+
+
+            </div>
+            <el-pagination layout="prev,  next"
+                           :total="total">
+            </el-pagination>
+        </div>
+
+    </div>
+
+    <script>
+        //var exampleDefault = new MiniMasonry({
+        //    container: '.default',
+        //});
+        //window.onload = function () {
+        //    var miniMasonry = new MiniMasonry({
+        //        container: '.default',
+        //        itemSelector: '.item',
+        //        baseWidth: 150, // 可以设置为你的列宽
+        //        gutter: 10, // 自定义每个元素之间的间距
+        //        fitWidth: true // 自适应宽度
+        //    });
+
+        //    miniMasonry.layout(); // 布局
+        //};
+
+        var Init =@Html.Raw(ViewBag.User);
+            var Guize =@Html.Raw(ViewBag.Guize);
+    var app = new Vue({
+        el: "#appp",
+        data() {
+            var validatePass = (rule, value, callback) => {
+                if (value) { // 只有当输入了内容时，才进行验证
+                    switch (rule.field) {
+                        case 'GS': //航司
+                            var chrnum = /^\s*([A-Za-z0-9]{2}\s*[/、,，]{0,1})+\s*$/;
+                            if (!chrnum.test(value)) {
+                                callback(new Error('航司格式错误,正确格式如: "MF" 多个航司以","（逗号）分隔'));
+                            }
+                            break;
+                        case 'Seg': //航线
+                            var chrnum = /^\s*([A-Za-z]{6}\s*[/、,，]{0,1})+\s*$/;
+                            if (!chrnum.test(value)) {
+                                callback(new Error('航线格式错误,正确格式如: "CKGTFU"（重庆至成都天府） 多个航线以","（逗号）分隔'));
+                            }
+                            break;
+                        case 'TicketPrefix': //座位数
+                        case 'EarlyCheckIn': //飞行高度
+                            var chrnum = /^[0-9]*$/;
+                            if (!chrnum.test(value)) {
+                                callback(new Error('请输入数字'));
+                            }
+                            break;
+                    }
+                }
+                callback(); // 验证通过
+            };
+            return {
+                sousuo:'',
+               time:'2025-01-11',
+                Init: Init,
+                Guize: Guize,
+                dataList: [],
+                page: 1,
+                limit: 20,
+                total: 0,
+                miniMasonry: null,
+                loading: false,
+            }
+        },
+        created() {
+            this.reloadData();
+        },
+        mounted() {
+            // 初始化 MiniMasonry
+            this.miniMasonry = new MiniMasonry({
+                container: '.default',
+                itemSelector: '.item',
+                baseWidth: 130,
+                gutter: 10,
+                fitWidth: true
+            });
+
+            // 布局
+            setTimeout(() => {
+                this.miniMasonry.layout();
+            }, 500);
+
+            // 你可以在数据更新后再次调用layout()方法
+
+        },
+        methods: {
+            handleLoad() {
+                var that = this;
+                if (that.miniMasonry != null) {
+                    that.miniMasonry.layout();
+                }
+            },
+            navigateToSignup() {
+               var url = "@Url.Action("BaomingClick")";
+               $.post(url, {}, function (xhr) {
+                   if (xhr.Code == 1) {
+                       location.href = '@Url.Action("Upload", "home")';
+
+                   } else {
+                       layer.msg(xhr.Msg);
+                       if (that.miniMasonry != null) {
+                           that.miniMasonry.layout();
+                       }
+
+                   }
+
+               }).complete(function () {
+               }).error(function (e) {
+                   //that.msg = that.subLen(e);
+               })
+
+           },
+
+            GetParam: function () {
+
+                return { Sousuo: this.sousuo,Sex:"男",page: this.page, limit: this.limit };
+            },
+            reloadData: function (page) {
+                if (typeof (page) != "undefined") {
+                    this.page = page;
+                }
+                var param = this.GetParam();
+                var that = this;
+                var url = "@Url.Action("SearchPage")";
+                $.post(url, param, function (xhr) {
+                    if (xhr.Code == 1) {
+                        that.dataList = xhr.Data;
+                        that.total = xhr.TotalCount;
+                        setTimeout(function () {
+                            if (that.miniMasonry != null) {
+                                that.miniMasonry.layout();
+                            }
+
+                        }, 500)
+
+                    } else {
+                        that.dataList = [];
+                        setTimeout(function () {
+                            if (that.miniMasonry != null) {
+                                that.miniMasonry.layout();
+                            }
+
+                        }, 800)
+                    }
+
+                }).complete(function () {
+                }).error(function (e) {
+                    that.msg = that.subLen(e);
+                })
+
+
+            },
+            tpp: function (gh,sex) {
+                this.loading = true;
+                var that = this;
+                var url = "@Url.Action("TouPiao")";
+                $.post(url, { Gh: gh, Sex: sex }, function (xhr) {
+                    debugger;
+                    if (xhr.Code == 1) {
+                        layer.msg("投票成功");
+                        that.reloadData();
+
+
+                    } else {
+                        layer.msg("投票失败：" + xhr.Msg);
+                        that.loading = false;
+                        setTimeout(function () {
+                            if (that.miniMasonry != null) {
+                                that.miniMasonry.layout();
+                            }
+
+                        }, 500)
+                    }
+
+                }).complete(function () {
+                    that.loading = false;
+                }).error(function (e) {
+                    loading.close();
+                    that.$alert("出错", '提示', {
+                        confirmButtonText: '确定'
+                    });
+                })
+            }
+        }
+    });
+
+
+
+    </script>
+    <script>
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+﻿
+<div id="app" class="layuimini-container layuimini-main" style="padding:50px;">
+    <el-form label-position="top" ref="form" :model="form" :rules="rules" label-width="100px" size="mini">
+
+        <el-form-item label="选手姓名">
+            <el-input v-model="form.Name" size="mini" :disabled="true"></el-input>
+        </el-form-item>
+        <el-form-item label="部门" prop="BuMen">
+            <el-input v-model="form.BuMen" size="mini"></el-input>
+        </el-form-item>
+        <el-form-item label="宣言" prop="XuanYan">
+            <el-input type="textarea" :rows="3" placeholder="请输入内容" v-model="form.XuanYan" size="mini">
+            </el-input>
+        </el-form-item>
+
+        <el-row>
+            <el-form-item label="风采展示">
+                <el-upload class="avatar-uploader"
+                           action="FileUpload"
+                           :before-remove="beforeRemove"
+                           accept=".jpg,.png,.jpeg"
+                           :on-remove="handleRemove"
+                           :on-change="handleChange"
+                           :on-exceed="handleExceed"
+                           multiple
+                           @*:data="form"*@
+                           :limit="1"
+                           :auto-upload="false"
+                           :file-list="fileList"
+                           list-type="picture">
+                    <el-button size="small" type="primary">选择照片</el-button>
+                    <div slot="tip" class="el-upload__tip"><span style="color: #F56C6C;">只能上传一张照片哦</span></div>
+                </el-upload>
+
+
+
+
+            </el-form-item>
+
+        </el-row>
+
+
+
+
+        <el-row>
+            <el-button type="primary" size="small" @@click="onSubmit('form')" :loading="loading">{{form.Id>0?"修改":"报名"}}</el-button>
+        </el-row>
+        <el-row style="margin-top:10px">
+            <el-button size="small" @@click="navigateToUpdate" :loading="loading">返回</el-button>
+        </el-row>
+    </el-form>
+
+
+
+</div>
+
+
+<script>
+
+
+    var model =@Html.Raw(ViewBag.User);
+    @*var InitFileType =@Html.Raw(ViewBag.InitFileType);*@
+    var app = new Vue({
+        el: "#app",
+        data() {
+            var validatePass = (rule, value, callback) => {
+                if (value) { // 只有当输入了内容时，才进行验证
+                    switch (rule.field) {
+                        case 'GS': //航司
+                            var chrnum = /^\s*([A-Za-z0-9]{2}\s*[/、,，]{0,1})+\s*$/;
+                            if (!chrnum.test(value)) {
+                                callback(new Error('航司格式错误,正确格式如: "MF" 多个航司以","（逗号）分隔'));
+                            }
+                            break;
+                        case 'Seg': //航线
+                            var chrnum = /^\s*([A-Za-z]{6}\s*[/、,，]{0,1})+\s*$/;
+                            if (!chrnum.test(value)) {
+                                callback(new Error('航线格式错误,正确格式如: "CKGTFU"（重庆至成都天府） 多个航线以","（逗号）分隔'));
+                            }
+                            break;
+                        case 'TicketPrefix': //座位数
+                        case 'EarlyCheckIn': //飞行高度
+                            var chrnum = /^[0-9]*$/;
+                            if (!chrnum.test(value)) {
+                                callback(new Error('请输入数字'));
+                            }
+                            break;
+                    }
+                }
+                callback(); // 验证通过
+            };
+            return {
+                thisfile: [],
+                form: model,
+                fileList: [],
+                loading: false,
+                isupdate:false,
+                rules: {
+                    BuMen: [{ required: true, message: '请填写部门', trigger: 'blur' }],
+                    AirLine: [{ required: true, message: '请选择航司', trigger: 'change' }],
+                    ContentTypeId: [{ required: true, message: '请选择文件类型', trigger: 'change' }],
+                    XuanYan: [{ required: true, message: '请填写宣言', trigger: 'blur' }],
+                    ValidTime: [{ type: 'date', required: true, message: '请选择有效期', trigger: 'change' }],
+                    EffectTime: [{ type: 'date', required: true, message: '请选择生效期', trigger: 'change' }],
+                    X: [],
+
+                },
+            }
+
+        },
+        computed: {
+            /*ComputedIsForeverValid() { return this.form.IsForeverValid == 0 ? 'ValidTime' : 'X' },*/
+        },
+        created() {
+            if (this.form.Id > 0)
+            {
+                this.isupdate=true;
+            }
+            //if (this.form.Id == 0) {
+            //    this.form.ValidTime = null;
+            //    this.form.EffectTime = null;
+            //}
+            //else
+            //{
+            //    debugger;
+            //    this.thisfile = this.fileList;
+            //}
+            //this.init.Zcr = User;
+        },
+        mounted() {
+           /* this.setUploadedFiles(this.form.FilePath);*/
+        },
+        methods: {
+            navigateToUpdate() {
+                const selected = localStorage.getItem("selectedTab");
+                if (selected) {
+                    if (selected == "home") {
+                        location.href = '@Url.Action("index", "home")';
+                    }
+                    else if (selected == "products") {
+                        location.href = '@Url.Action("namindex", "home")';
+                    }
+                    else {
+                        location.href = '@Url.Action("jieshao", "home")';
+                    }
+                }
+                else
+                {
+                                          localStorage.setItem("selectedTab", "home");
+                      location.href = '@Url.Action("index", "home")';
+                }
+            },
+            setUploadedFiles(previousFiles) {
+                debugger;
+                // 假设 previousFiles 是包含文件名和类型的数组
+                this.fileList = previousFiles.map(file => {
+                    return {
+                        name: file.name,
+                        url: file.url ? file.url : '', // 如果有文件的访问链接
+                        status: 'success', // 根据需要设置状态
+                        raw: new Blob(['Hello, world!'], { type: 'text/plain' }),
+                        response: {}, // 可根据需要添加响应
+                    };
+                });
+                this.thisfile = this.fileList;
+            },
+            handleExceed(file, fileList) {
+                layer.msg("文件列表已满");
+            },
+            handleRemove(file, fileList) {
+                //console.log(file, fileList);
+                this.thisfile = this.thisfile.filter(s => s.name !== file.name);
+                console.log(this.thisfile);
+            },
+            handleChange(file, fileList) {
+                console.log(file, fileList);
+                //var tempfile = [];
+                //fileList.forEach(s => { tempfile.push(s.name); });
+                //this.thisfile = tempfile;
+                this.thisfile.push(file)
+                console.log(this.thisfile);
+            },
+            beforeRemove(file, fileList) {
+                return this.$confirm(`确定移除 ${file.name}？`);
+            },
+
+            onClose: function () {
+
+                //layui.use(['miniTab'], function () {
+                //    miniTab = layui.miniTab;
+                //    miniTab.deleteCurrentByIframe();
+
+                //});
+
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            },
+            onSubmit: function(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        if (this.thisfile.length === 0)
+                        {
+                            layer.msg("请选择文件");
+                            return false;
+                        }
+                        this.loading = true;
+                        var that = this;
+                        const formData = new FormData();
+                        that.thisfile.forEach(s => { formData.append("file", s.raw, s.name); });
+                        formData.append("json", JSON.stringify(that.form));
+                        $.ajax({
+                            type: 'post',
+                            url: '@Url.Action("FileUpload")',
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            success: function (xhr) {
+                                if (xhr.Code == 1) {
+                                    layer.msg(that.isupdate?"修改成功":"报名成功");
+                                    setTimeout(function () {
+                                        const selected = localStorage.getItem("selectedTab");
+                                        if (selected) {
+                                            if (selected == "home") {
+                                                location.href = '@Url.Action("index", "home")';
+                                            }
+                                            else if (selected == "products") {
+                                                location.href = '@Url.Action("namindex", "home")';
+                                            }
+                                            else
+                                            {
+                                                 location.href = '@Url.Action("jieshao", "home")';
+                                            }
+                                        }
+                                        else {
+                                            localStorage.setItem("selectedTab", "home");
+                                            location.href = '@Url.Action("index", "home")';
+                                        }
+
+                                    }, 1000)
+
+                                } else {
+                                    layer.msg(that.isupdate ? "修改失败" :"报名失败：" + xhr.Msg);
+                                    that.loading = false;
+                                }
+                            },
+                            error: function () {
+                                loading.close();
+                                that.$alert(that.isupdate ? "修改出错" : "上传出错", '提示', {
+                                    confirmButtonText: '确定'
+                                });
+                            }
+                        });
+
+                    } else {
+                        return false;
+                    }
+                });
+            },
+            handleFlyTimeStartChange() {
+                // 当第一个时间选择框的值改变时，重置第二个时间选择框的值
+                this.form.FlyTimeEnd = '';
+            },
+            handleTicketTimeStartChange()
+            {
+                this.form.TicketTimeEnd = '';
+            },
+            ForeverValidChange(val)
+            {
+                this.$nextTick(() => {
+                    this.$refs['form'].clearValidate(['ValidTime']);
+                    this.$refs['form'].clearValidate(['X']);
+                    //setTimeout(() => {
+                    //    this.$refs['form'].clearValidate(['ValidTime']);
+                    //}, 1);
+                });
+            }
+        }
+    })
+
+
+
+</script>
+<style>
+    el-upload-list el-upload-list--text {
+        height: 200px;
+    }
+
+    .el-upload-list {
+        height: 200px;
+    }
+
+    .el-select {
+        display: block;
+        position: relative;
+    }
+
+    .btns {
+        position: relative;
+        /* 上传图标 */
+    }
+
+    .el-icon-upload {
+        position: absolute;
+        top: 15px;
+        left: 11px;
+        font-size: 16px;
+        color: white;
+    }
+    /* label即上传按钮的样式，将会作用在input样式上 */
+    .upload-btn {
+        width: 100%;
+        height: 20px;
+        text-align: right;
+        display: inline-block;
+        line-height: 20px;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border: 1px solid dodgerblue;
+        border-radius: 5px;
+        background: dodgerblue;
+    }
+
+    .Duan {
+        width: 220px
+    }
+
+    .el-button--primary {
+        color: #FFF;
+        background-color: #409EFF;
+        border-color: #409EFF;
+        width: 100%;
+    }
+    .el-button {
+        width: 100%;
+    }
+</style>
