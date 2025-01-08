@@ -320,7 +320,7 @@ namespace WebSite.Controllers
                     ajaxResult.Msg = "你已经投了一票男神哦";
                     return Json(ajaxResult);
                 }
-                if (Sex == "男" && uu.WoMan >= 3)
+                if (Sex == "女" && uu.WoMan >= 3)
                 {
                     ajaxResult.Msg = "你已经投了三票女神了";
                     return Json(ajaxResult);
@@ -389,8 +389,8 @@ namespace WebSite.Controllers
                 var data = repository.Change<BaoMing>().DetachedEntities.Where(where).OrderByDescending(i => i.Id).ToPagedList(page, limit);
 
 
-
-
+                var uu = repository.DetachedEntities.FirstOrDefault(x => x.Id == UserInfo.Id);
+                ajaxResult.Data2 = uu;
                 ajaxResult.Data = data.Items;
                 ajaxResult.Code = 1;
                 ajaxResult.TotalCount = data.TotalCount;
