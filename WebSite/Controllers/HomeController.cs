@@ -505,7 +505,18 @@ namespace WebSite.Controllers
 
 
 
-
+        private static ImageCodecInfo GetEncoder(ImageFormat format)
+        {
+            var codecs = ImageCodecInfo.GetImageDecoders();
+            foreach (var codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                {
+                    return codec;
+                }
+            }
+            return null;
+        }
 
         [AdminUserCheck]
         public async Task<IActionResult> FileUpload(string json)
@@ -519,6 +530,7 @@ namespace WebSite.Controllers
                 var dircstr = $"Uploads/IntlStudent";
                 var txcstr = $"Uploads/TX";
                 var dtxcstr = $"Uploads/DTX";
+                var sltcstr = $"Uploads/SLT";
                 var input = json.ToObject<BaoMing>();
                 List<FileList> newFiles = new();
 
@@ -626,8 +638,63 @@ namespace WebSite.Controllers
                                 }
                             }
                         }
+                        using (var originalImage = Image.FromStream(stream))
+                        {
+                            var SLTsavePath = Path.Combine(App.WebHostEnvironment.WebRootPath, sltcstr);
+                            if (!Directory.Exists(SLTsavePath)) Directory.CreateDirectory(SLTsavePath);
 
-                      
+                            // 计算缩放后的尺寸，保持原始比例
+                            //int maxDimension = 200; // 最大尺寸，例如300px
+                            //float ratio = Math.Min(maxDimension / (float)originalImage.Width, maxDimension / (float)originalImage.Height);
+                            //int newWidth = (int)(originalImage.Width * ratio);
+                            //int newHeight = (int)(originalImage.Height * ratio);
+
+                            // 创建缩放后的图像
+                            using (var resizedImage = new Bitmap(originalImage, new Size(originalImage.Width, originalImage.Height)))
+                            {
+                                // 压缩到500KB
+                                long targetSize = 500 * 1024; // 500 KB
+                                long quality = 100L; // 从100开始
+                                var encoder = GetEncoder(ImageFormat.Jpeg); // 使用 JPEG 格式
+                                var encoderParameters = new EncoderParameters(1);
+                                var encoderParameter = new EncoderParameter(Encoder.Quality, quality);
+                                encoderParameters.Param[0] = encoderParameter;
+                                string txfileName = $"{singelfinename}.jpg"; // 使用 GUID 生成唯一文件名
+                                string DtxfilePath = Path.Combine(SLTsavePath, txfileName);
+
+                                using (var memoryStream = new MemoryStream())
+                                {
+                                    while (true)
+                                    {
+                                        // 保存图像到内存流
+                                        resizedImage.Save(memoryStream, encoder, encoderParameters);
+                                        var imageBytes = memoryStream.ToArray();
+
+                                        // 如果图像大小小于目标大小，则保存并退出
+                                        if (imageBytes.Length <= targetSize)
+                                        {
+                                            System.IO.File.WriteAllBytes(DtxfilePath, imageBytes);
+                                            break;
+                                        }
+
+                                        // 减少质量以继续压缩
+                                        quality -= 5; // 每次减去5
+                                        if (quality < 0)
+                                        {
+                                            throw new InvalidOperationException("无法压缩图像到指定大小。");
+                                        }
+
+                                        // 更新压缩参数
+                                        encoderParameter = new EncoderParameter(Encoder.Quality, quality);
+                                        encoderParameters.Param[0] = encoderParameter;
+
+                                        // 清空内存流以进行下一次保存
+                                        memoryStream.SetLength(0);
+                                    }
+                                }
+                            }
+                        }
+
                     }
                     #endregion
 

@@ -62,5 +62,33 @@ namespace Domain.Model
                 return "";
             }
         }
+        [NotMapped]
+        public string DTXFilePathList
+        {
+            get
+            {
+                var newpath = this.FilePath.Replace("IntlStudent", "DTX");
+                if (newpath.isNotNull())
+                {
+                    var pathlist = newpath.Split('.');
+                    return pathlist[0] + ".png";
+                }
+                return "";
+            }
+        }
+        [NotMapped]
+        public string SLTFilePathList
+        {
+            get
+            {
+                var newpath = this.FilePath.Replace("IntlStudent", "SLT");
+                if (newpath.isNotNull())
+                {
+                    var pathlist = newpath.Split('.');
+                    return pathlist[0] + ".jpg";
+                }
+                return "";
+            }
+        }
     }
 }

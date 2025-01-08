@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>逸鸣惊人晚会</title>
+    <title>“逸”鸣惊人主题年会</title>
     <script src="/js/minimasonry.min.js"></script>
     <link href="~/Plugin/layui/css/layui.css" rel="stylesheet" />
     <script src="/Plugin/layui/layui.js"></script>
@@ -179,9 +179,11 @@
                 </el-row>
                 <el-row>
                     <el-col :span="24">
-                        <span style="color:red"><i class="el-icon-warning-outline"></i>投票规则: </span>每个参会成员活动内只能投票4票
+                        <span style="color:red"><i class="el-icon-warning-outline"></i>投票规则: </span>     <br />1.每个参会成员活动内只能投票4票(3票女神1票男神)
                         <br />
-                        (3票女神1票男神)，可为同一个选手投票1票
+                        2.只可为同一个选手投票1票
+                        <br />
+                        3.不能给自己投票
                     </el-col>
 
                 </el-row>
@@ -210,7 +212,7 @@
                 <div class="item" v-for="data in dataList">
                     <p class="xiaoshuzi" v-show="data.Sex=='男'"><i class="Ticonfont iconH5_shouye_xuanshou_tupian_jiaobiao" style="color: rgb(82, 130, 240);"></i>男神</p>
                     <p class="xiaoshuzi" v-show="data.Sex=='女'"><i class="Ticonfont iconH5_shouye_xuanshou_tupian_jiaobiao" style="color: #f052a8;"></i>女神</p>
-                    <el-image style="width: 100%; " :src="data.FilePath" fit="contain" lazy @@load="handleLoad" :preview-src-list="data.FilePathList"></el-image>
+                    <el-image style="width: 100%; " :src="data.SLTFilePathList" fit="contain" lazy @@load="handleLoad" :preview-src-list="data.FilePathList"></el-image>
                     <div class="xuanshou_name break1">{{data.Gh}}&nbsp; {{data.Name}}</div>
                     <div class="xuanshou_name2 break2">{{data.XuanYan}}</div>
                     <div class="xuanshou_vote"><span style="color: rgb(82, 130, 240);">{{data.Count}}</span> 票</div>
