@@ -271,6 +271,7 @@
                 }
             },
             navigateToSignup() {
+                var that = this;
                 var url = "@Url.Action("BaomingClick")";
                 $.post(url, {}, function (xhr) {
                     if (xhr.Code == 1) {
@@ -293,6 +294,7 @@
 
             navigateToUpdate()
             {
+                var that = this;
                   var url = "@Url.Action("BaomingUpdateClick")";
   $.post(url, {}, function (xhr) {
       if (xhr.Code == 1) {

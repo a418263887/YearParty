@@ -39,10 +39,18 @@ namespace Domain.Model
         /// 票数
         /// </summary>
         public int Count { get; set; }
+
         /// <summary>
         /// 部门
         /// </summary>
         public string BuMen { get; set; } = "";
+
+        public string Color { get; set; } = "";
+
+        public DateTime UpdateTime { get; set; } = DateTime.Now;
+
+        [NotMapped]
+        public string CountStr { get; set; } = "";
 
         [NotMapped]
         public List<string> FilePathList { get { return new List<string> { this.FilePath ?? "" }; } }

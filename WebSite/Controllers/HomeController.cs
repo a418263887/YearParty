@@ -161,6 +161,96 @@ namespace WebSite.Controllers
         //异常
 
 
+        public IActionResult Show() 
+        {
+            return View();
+        }
+        public IActionResult ShowSearchPage() 
+        {
+            var List= repository.Change<BaoMing>().Where(x => x.Count > 0).OrderByDescending(x => x.Count).ThenBy(x => x.UpdateTime).ToList();
+            foreach (var item in List)
+            {
+                item.CountStr = $"{item.Count}票";
+            }
+            var Nvshen = List.Where(x=>x.Sex=="女").Take(3).ToList();
+
+            var Nvpaihang = List.Where(x=>x.Sex=="女").Take(7).ToList();
+            var Nanshen = List.Where(x => x.Sex == "男").Take(3).ToList();
+
+            var Nanpaihang = List.Where(x => x.Sex == "男").Take(7).ToList();
+
+            if (Nvshen.Count < 3) 
+            {
+                var cha = 3 - Nvshen.Count;
+                for (int i = 0; i < cha; i++)
+                {
+                    Nvshen.Add(new() { BuMen = "", FilePath = "/xwyd.png", Name = "", CountStr = "" });
+                }
+            }
+            if (Nanshen.Count <1)
+            {
+                Nanshen.Add(new() { BuMen = "", FilePath = "/xwyd.png", Name = "", CountStr = "" });
+            }
+            List<ShowData> NvData = new();
+            var nvZongPiao = Nvpaihang.Sum(x => x.Count);
+            foreach (var item in Nvpaihang)
+            {
+                ShowData data = new()
+                {
+                    Color = item.Color,
+                    Name = item.Name,
+                    Image = item.DTXFilePathList,
+                    Piao = item.CountStr,
+                    Percentage = (item.Count / nvZongPiao).ToDecimal(2)
+                };
+                NvData.Add(data);
+            }
+            if (NvData.Count < 7) 
+            {
+                var cha = 7 - NvData.Count;
+                for (int i = 0; i < cha; i++)
+                {
+                    NvData.Add(new() { Name="虚位以待", Image="/xwyd.jpg",Piao="",Color="#fff",Percentage=0M });
+                }
+            }
+            List<ShowData> NanData = new();
+            var nanZongPiao = Nanpaihang.Sum(x => x.Count);
+            foreach (var item in Nanpaihang)
+            {
+                ShowData data = new()
+                {
+                    Color = item.Color,
+                    Name = item.Name,
+                    Image = item.DTXFilePathList,
+                    Piao = item.CountStr,
+                    Percentage = (item.Count / nvZongPiao).ToDecimal(2)
+                };
+                NanData.Add(data);
+            }
+            if (NanData.Count < 7)
+            {
+                var cha = 7 - NanData.Count;
+                for (int i = 0; i < cha; i++)
+                {
+                    NanData.Add(new() { Name = "虚位以待", Image = "/xwyd.jpg", Piao = "", Color = "#fff", Percentage = 0M });
+                }
+            }
+
+            ShowResult res = new()
+            {
+                NanPai = NanData,
+                NvPai = NvData,
+                NanShen = Nanshen,
+                NvShen = Nvshen
+            };
+            ajaxResult.Code = 1;
+            ajaxResult.Data = res;
+            return Json(ajaxResult);
+
+
+        }
+
+
         [Route("/home/error")]
         public ActionResult Error(int code = 0)
         {
@@ -330,6 +420,7 @@ namespace WebSite.Controllers
                     try
                     {
                         pp.Count += 1;
+                        pp.UpdateTime = DateTime.Now;
                         repository.Change<BaoMing>().Update(pp);
                         repository.Change<BaoMing>().SaveNow();
                         uu.PiaoCount -= 1;
@@ -348,6 +439,7 @@ namespace WebSite.Controllers
 
                         // 提交事务
                         transaction.Commit();
+                         SignalRHelper.SendSignalR("Reload", "OK");
                         ajaxResult.Code = 1;
                         return Json(ajaxResult);
 
@@ -750,10 +842,12 @@ namespace WebSite.Controllers
                 if (baom.isNotNull())
                 {
                     input.Id = baom.Id;
+         
                     await repository.Change<BaoMing>().UpdateNowAsync(input);
                 }
                 else
                 {
+                    input.Color = GenerateRandomRgbColor();
                     await repository.Change<BaoMing>().InsertNowAsync(input);
                 }
                 var uu = repository.DetachedEntities.FirstOrDefault(x => x.Id == UserInfo.Id);
@@ -772,8 +866,19 @@ namespace WebSite.Controllers
             return Json(ajaxResult);
         }
 
+       private static string GenerateRandomRgbColor()
+        {
+            Random random = new Random();
+            // 生成随机的 RGB 值
+            // 控制 RGB 值的范围，避免偏白
+            int red = random.Next(0, 201);   // 0-200
+            int green = random.Next(0, 201); // 0-200
+            int blue = random.Next(0, 201);  // 0-200
 
-        
+            // 格式化为 RGB 字符串
+            return $"rgb({red}, {green}, {blue})";
+        }
+
 
         [AdminUserCheck]
         public ActionResult Jieshao()

@@ -303,6 +303,7 @@
         methods: {
 
             navigateToSignup() {
+                var that = this;
                 var url = "@Url.Action("BaomingClick")";
                 $.post(url, {}, function (xhr) {
                     if (xhr.Code == 1) {

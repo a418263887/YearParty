@@ -1,0 +1,375 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <title>“逸”鸣惊人主题年会</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" lang="zh-cn" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- basic styles -->
+    <link href="~/Plugin/bootstrap3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Plugin/font/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/ace.min.css" rel="stylesheet" />
+    <script src="~/Content/md5.js"></script>
+
+    <script src="~/Plugin/jquery/jquery-1.9.1.min.js"></script>
+    <script src="~/Plugin/vue-2.7.10.js"></script>
+    <script src="/Plugin/axios-0.19.2.js"></script>
+    @*<link href="~/Plugin/element-ui/index.css" rel="stylesheet" />*@
+    <script src="~/Plugin/element-ui/index.js"></script>
+    <link rel="stylesheet" href="~/Plugin/element-ui/index.css">
+    <link rel="stylesheet" type="text/css" href="~/js/achillesfont/achillesfont.css" />
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <style>
+        /* 清除浏览器默认边距，
+                                使边框和内边距的值包含在元素的width和height内 */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 使用flex布局，让内容垂直和水平居中 */
+
+        section {
+            /* 相对定位 */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片 */
+            background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+        }
+
+            /* 背景颜色 */
+
+            section .color {
+                /* 绝对定位 */
+                position: absolute;
+                /* 使用filter(滤镜) 属性，给图像设置高斯模糊*/
+                filter: blur(200px);
+            }
+
+                /* :nth-child(n) 选择器匹配父元素中的第 n 个子元素 */
+
+                section .color:nth-child(1) {
+                    top: -350px;
+                    width: 50vw;
+                    height: 100vh;
+                    background: #fffd87;
+                }
+
+                section .color:nth-child(2) {
+                    bottom: -150px;
+                    left: 100px;
+                    width: 50vw;
+                    height: 100vh;
+                    background: #ff359b;
+                }
+
+                section .color:nth-child(3) {
+                    bottom: 50px;
+                    right: -300px;
+                    width: 50vw;
+                    height: 100vh;
+                    background: #00d2ff;
+                }
+
+
+        .container {
+            display: flex; /* 使用 flexbox 布局 */
+            width: 95%; /* 容器的总宽度 */
+            z-index: 1;
+        }
+
+        .box {
+            flex: 1; /* 每个 box 平分剩余空间 */
+            padding: 20px; /* 内边距 */
+            margin: 10px; /* 外边距 */
+            /*background-color: #4CAF50;*/ /* 背景颜色 */
+            color: white; /* 字体颜色 */
+            text-align: center; /* 文本居中 */
+            border-radius: 5px; /* 边角圆滑 */
+        }
+
+        .left {
+            width: 200px; /* 左侧框的宽度 */
+        }
+
+        .right {
+            width: 200px; /* 右侧框的宽度 */
+        }
+
+        .image-box {
+            width: 250px; /* 设置宽度 */
+            height: 250px; /* 设置高度 */
+            background-size: cover; /* 背景图像铺满整个 div */
+            background-position: center; /* 背景图像居中 */
+            margin: 0 auto; /* 水平居中 */
+        }
+
+        /*.data-row {
+            margin-top: 10px;*/ /* 行间距 */
+        /*}
+
+        .progress-info {*/
+        /*   display: flex;*/
+        /*align-items: center;*/ /* 垂直居中 */
+        /*justify-content: space-between;*/ /* 使进度条与图片横向分布 */
+        /*width: 100%;*/ /* 确保占满整个宽度 */
+        /*}
+
+        .progress-bar-container {
+            flex-grow: 1;*/ /* 允许进度条容器占用剩余空间 */
+        /*height: 30px;*/ /* 进度条的高度 */
+        /*background-color: #f5f5f5;*/ /* 背景颜色 */
+        /*margin-right: 10px;*/ /* 进度条与图片之间的间距 */
+        /*}
+
+        .progress-bar {
+            background-color: #409EFF;*/ /* 进度条颜色 */
+        /*height: 100%;*/ /* 进度条高度与容器相同 */
+        /*text-align: center;*/ /* 文本居中 */
+        /*line-height: 30px;*/ /* 文本垂直居中 */
+        /*color: white;*/ /* 文本颜色 */
+        /*border-radius: 25px;
+        }
+
+        .custom-image {
+            width: 30px;*/ /* 自定义图像的宽度 */
+        /*height: 30px;*/ /* 自定义图像的高度 */
+        /*border-radius: 50%;*/ /* 圆形边框 */
+        /*margin-left: 10px;*/ /* 图片与文本间距 */
+        /*}*/
+    </style>
+    <style>
+        .data-row {
+            margin-top: 10px;
+            padding-left: 40px;
+        }
+
+        .progress-info {
+            display: flex; /* 使用 Flexbox */
+            align-items: center; /* 垂直居中 */
+            width: 100%; /* 确保占满整个宽度 */
+        }
+
+        .progress-bar-container {
+            flex-grow: 1; /* 允许进度条容器占用剩余空间 */
+            height: 30px; /* 进度条的高度 */
+            background-color: #f5f5f5; /* 背景颜色 */
+            margin-right: 5px; /* 进度条与图片之间的间距，减少间距 */
+        }
+
+        .progress-bar {
+            background-color: #409EFF; /* 进度条颜色 */
+            height: 100%; /* 进度条高度与容器相同 */
+            text-align: right; /* 文本居中 */
+            line-height: 30px; /* 文本垂直居中 */
+            color: white; /* 文本颜色 */
+            border-radius: 25px;
+            border: 1px solid #fff;
+        }
+
+        .custom-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: -15px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <!-- 背景颜色 -->
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div id="appp" class="container">
+            <div class="box left">
+                <el-row style="margin-bottom: 60px;">
+                    <span style="font-weight: bold; font-size: 44px; font-family: 斗鱼追光体; color: #e22ba0">女神</span>
+                </el-row>
+                <el-row style="color: #e22ba0">
+                    <el-col :span="8" v-for="(item, index) in dataList.NvShen" :key="index">
+                        <div class="image-box" style="background-image: url('../../bz.png');">
+
+                            <el-avatar style="margin-top:69px;margin-right:9px" :size="105" :src="item.DTXFilePathList"></el-avatar>
+                            <p style="margin-top: -230px; margin-right: 5px; font-weight: bold; font-size: 24px; font-family: GEETYPE晴空黑GB-闪常规;">{{item.Name}}&nbsp;{{item.CountStr}}</p>
+                            <p style="margin-top: -5px; margin-right: 5px; font-weight: bold; font-size: 14px; font-family: GEETYPE晴空黑GB-闪常规;">{{item.BuMen}}</p>
+                        </div>
+
+
+                    </el-col>
+                    @*<el-col :span="8">
+                            <div class="image-box" style="background-image: url('../../bz.png');">
+                                <el-avatar style="margin-top:69px;margin-right:9px" :size="105" :src="beijing"></el-avatar>
+                                <p style="margin-top: -230px; margin-right: 5px; font-weight: bold; font-size: 24px; font-family: GEETYPE晴空黑GB-闪常规;">郭泽&nbsp;22票</p>
+                                <p style="margin-top: -5px; margin-right: 5px; font-weight: bold; font-size: 14px; font-family: GEETYPE晴空黑GB-闪常规;">技术部</p>
+                            </div>
+
+                        </el-col>
+                        <el-col :span="8">
+                            <div class="image-box" style="background-image: url('../../bz.png');">
+                                <el-avatar style="margin-top:69px;margin-right:9px" :size="105" :src="beijing"></el-avatar>
+                                <p style="margin-top: -230px; margin-right: 5px; font-weight: bold; font-size: 24px; font-family: GEETYPE晴空黑GB-闪常规;">郭泽&nbsp;22票</p>
+                                <p style="margin-top: -5px; margin-right: 5px; font-weight: bold; font-size: 14px; font-family: GEETYPE晴空黑GB-闪常规;">技术部</p>
+                            </div>
+
+                        </el-col>*@
+                </el-row>
+                <!--<el-row class="data-row" v-for="(item, index) in data" :key="index">
+                <el-col :span="24" class="progress-info">-->
+                @*<div class="progress-bar-container">*@
+                <!--<div class="progress-bar" :style="{ width: item.percentage + '%' }">
+                    {{ item.percentage }}%
+                </div>-->
+                @*</div>*@
+                <!--<img :src="item.image" alt="Custom Image" class="custom-image" />
+                        <span>{{ item.name }}</span>
+                    </el-col>
+                </el-row>-->
+
+                <el-row class="data-row" v-for="(item, index) in dataList.NvPai" :key="index">
+                    <el-col :span="24" class="progress-info">
+
+                        <div class="progress-bar" :style="{ width: item.Percentage + '%', backgroundColor: item.Color }">
+                            <span style="margin-right:20px"> {{ item.Piao }}</span>
+                        </div>
+
+                        <img :src="item.Image" alt="Custom Image" class="custom-image" />
+                        <span style="margin-left: 10px; min-width: 55px;">{{ item.Name }}</span>
+                    </el-col>
+                </el-row>
+
+            </div>
+            <div class="box right">
+                <el-row style="margin-bottom: 60px;">
+                    <span style="font-weight: bold; font-size: 44px; font-family: 斗鱼追光体; color: #2b73e2">男神</span>
+                </el-row>
+                <el-row style="color: #2b73e2">
+                    <el-col :span="24" v-for="(item, index) in dataList.NanShen" :key="index">
+                        <div class="image-box" style="background-image: url('../../bz.png');">
+
+                            <el-avatar style="margin-top:69px;margin-right:9px" :size="105" :src="item.DTXFilePathList"></el-avatar>
+                            <p style="margin-top: -230px; margin-right: 5px; font-weight: bold; font-size: 24px; font-family: GEETYPE晴空黑GB-闪常规;">{{item.Name}}&nbsp;{{item.CountStr}}</p>
+                            <p style="margin-top: -5px; margin-right: 5px; font-weight: bold; font-size: 14px; font-family: GEETYPE晴空黑GB-闪常规;">{{item.BuMen}}</p>
+                        </div>
+
+
+                    </el-col>
+                    @*<div class="image-box" style="background-image: url('../../bz.png');">
+
+                            <el-avatar style="margin-top:69px;margin-right:9px" :size="105" :src="beijing"></el-avatar>
+                            <p style="margin-top: -230px; margin-right: 5px; font-weight: bold; font-size: 24px; font-family: GEETYPE晴空黑GB-闪常规;">郭泽&nbsp;22</p>
+                            <p style="margin-top: -5px; margin-right: 5px; font-weight: bold; font-size: 14px; font-family: GEETYPE晴空黑GB-闪常规;">技术部</p>
+                        </div>*@
+
+
+                </el-row>
+                <el-row class="data-row" v-for="(item, index) in dataList.NanPai" :key="index">
+                    <el-col :span="24" class="progress-info">
+
+                        <div class="progress-bar" :style="{ width: item.Percentage + '%', backgroundColor: item.Color }">
+                            <span style="margin-right:20px"> {{ item.Piao }}</span>
+                        </div>
+
+                        <img :src="item.Image" alt="Custom Image" class="custom-image" />
+                        <span style="margin-left: 10px; min-width: 55px;">{{ item.Name }}</span>
+                    </el-col>
+                </el-row>
+            </div>
+        </div>
+
+    </section>
+    <script src="~/js/SignalRHelper.js"></script>
+    <script>
+        connection.on("Reload", (message) => {
+            if (message == 'OK') {
+                app.reloadData();
+
+                //app.$notify({
+                //    title: '完成',
+                //    message: '后台任务已处理完成',
+                //    type: 'success'  // 可选的通知类型，例如 success、warning、info、error
+                //});
+            }
+        });
+    </script>
+    <script>
+
+
+        @*var Init =@Html.Raw(ViewBag.User);
+        var Guize =@Html.Raw(ViewBag.Guize);*@
+    var app = new Vue({
+        el: "#appp",
+        data() {
+
+            return {
+                beijing:'/xwyd.jpg',
+                time:'2025-01-11',
+                dataList: [],
+                page: 1,
+                limit: 20,
+                total: 0,
+                miniMasonry: null,
+                loading: false,
+            }
+        },
+        created() {
+            this.reloadData();
+        },
+        mounted() {
+
+
+        },
+        methods: {
+
+            GetParam: function () {
+
+
+                return {  };
+            },
+            reloadData: function (page) {
+                if (typeof (page) != "undefined") {
+                    this.page = page;
+                }
+                var param = this.GetParam();
+                var that = this;
+                var url = "@Url.Action("ShowSearchPage")";
+                $.post(url, param, function (xhr) {
+                    if (xhr.Code == 1) {
+                        that.dataList = xhr.Data;
+
+
+                    } else {
+                        that.dataList = [];
+                    }
+
+                }).complete(function () {
+                }).error(function (e) {
+                    that.msg = that.subLen(e);
+                })
+
+
+            }
+
+        }
+    });
+
+
+
+    </script>
+</body>
+</html>
