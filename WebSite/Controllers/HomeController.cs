@@ -21,6 +21,7 @@ using Util.Ext;
 using WebSite.Filters;
 using static Microsoft.AspNetCore.Razor.Language.TagHelperMetadata;
 using System.Drawing.Drawing2D;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace WebSite.Controllers
 {
@@ -60,7 +61,7 @@ namespace WebSite.Controllers
 
             }
         }
-        const string UserJson = @"[{""name"":""周红"",""code"":""5008"",""sex"":""女""},{""name"":""李恒树"",""code"":""5007"",""sex"":""女""},{""name"":""陈轶"",""code"":""7017"",""sex"":""男""},{""name"":""杨宏川"",""code"":""7064"",""sex"":""男""},{""name"":""李舒心"",""code"":""7063"",""sex"":""男""},{""name"":""朱才华"",""code"":""7049"",""sex"":""男""},{""name"":""萧亚君"",""code"":""7062"",""sex"":""女""},{""name"":""周玮"",""code"":""7067"",""sex"":""女""},{""name"":""游翼嘉"",""code"":""7069"",""sex"":""男""},{""name"":""杨阳"",""code"":""7054"",""sex"":""男""},{""name"":""徐仕超"",""code"":""7038"",""sex"":""男""},{""name"":""曹航"",""code"":""7057"",""sex"":""男""},{""name"":""郭泽"",""code"":""7058"",""sex"":""男""},{""name"":""黄鑫"",""code"":""7059"",""sex"":""男""},{""name"":""邓勇"",""code"":""7050"",""sex"":""男""},{""name"":""张亚"",""code"":""7065"",""sex"":""女""},{""name"":""童小燕"",""code"":""7068"",""sex"":""女""},{""name"":""姜丽"",""code"":""8031"",""sex"":""女""},{""name"":""刘宇浩"",""code"":""8078"",""sex"":""女""},{""name"":""殷霞"",""code"":""8071"",""sex"":""女""},{""name"":""王忠玉"",""code"":""8001"",""sex"":""女""},{""name"":""游亚玲"",""code"":""8030"",""sex"":""女""},{""name"":""李丹"",""code"":""8079"",""sex"":""女""},{""name"":""黄秋霞"",""code"":""8080"",""sex"":""女""},{""name"":""冯婷婷"",""code"":""8081"",""sex"":""女""},{""name"":""张静"",""code"":""3306"",""sex"":""女""},{""name"":""杨蕊伊"",""code"":""8019"",""sex"":""女""},{""name"":""张洁"",""code"":""5011"",""sex"":""女""},{""name"":""李永智"",""code"":""1155"",""sex"":""女""},{""name"":""马微"",""code"":""9350"",""sex"":""女""},{""name"":""杨爽"",""code"":""6001"",""sex"":""女""},{""name"":""陈露"",""code"":""6028"",""sex"":""女""},{""name"":""谭雪芹"",""code"":""6037"",""sex"":""女""},{""name"":""李星"",""code"":""2041"",""sex"":""女""},{""name"":""余成勇"",""code"":""3316"",""sex"":""女""},{""name"":""刘艺情"",""code"":""2017"",""sex"":""女""},{""name"":""罗晓娟"",""code"":""2097"",""sex"":""女""},{""name"":""俞磊"",""code"":""9429"",""sex"":""男""},{""name"":""刘淋淋"",""code"":""9425"",""sex"":""女""},{""name"":""赵小利"",""code"":""2009"",""sex"":""女""},{""name"":""赵学樑"",""code"":""9516"",""sex"":""男""},{""name"":""郑均"",""code"":""9517"",""sex"":""女""},{""name"":""王胜"",""code"":""3005"",""sex"":""男""},{""name"":""王裕玲"",""code"":""9336"",""sex"":""男""},{""name"":""曾光"",""code"":""9345"",""sex"":""男""},{""name"":""张会梅"",""code"":""9518"",""sex"":""女""},{""name"":""周小龙"",""code"":""2168"",""sex"":""男""},{""name"":""李玉"",""code"":""2151"",""sex"":""女""},{""name"":""张晓亚"",""code"":""1120"",""sex"":""女""},{""name"":""陈思言"",""code"":""1098"",""sex"":""女""},{""name"":""姜婷"",""code"":""1097"",""sex"":""女""},{""name"":""付冰心"",""code"":""1135"",""sex"":""女""},{""name"":""陈红"",""code"":""1129"",""sex"":""女""},{""name"":""蒋敏"",""code"":""3108"",""sex"":""女""},{""name"":""刘小妹"",""code"":""3080"",""sex"":""女""},{""name"":""陈晓娇"",""code"":""9270"",""sex"":""女""},{""name"":""孙露"",""code"":""1124"",""sex"":""女""},{""name"":""冯小清"",""code"":""9295"",""sex"":""女""},{""name"":""郑露"",""code"":""1117"",""sex"":""女""},{""name"":""刘丹"",""code"":""9404"",""sex"":""女""},{""name"":""刘兰"",""code"":""1136"",""sex"":""女""},{""name"":""谢双霞"",""code"":""1050"",""sex"":""女""},{""name"":""罗圆圆"",""code"":""9273"",""sex"":""女""},{""name"":""张玉"",""code"":""1122"",""sex"":""女""},{""name"":""周丽娜"",""code"":""3010"",""sex"":""女""},{""name"":""马丹"",""code"":""2187"",""sex"":""女""},{""name"":""陈宇"",""code"":""2171"",""sex"":""女""},{""name"":""邹舟"",""code"":""2173"",""sex"":""女""},{""name"":""呙燕华"",""code"":""2112"",""sex"":""女""},{""name"":""邱青松"",""code"":""2196"",""sex"":""男""},{""name"":""何林"",""code"":""2202"",""sex"":""男""},{""name"":""谢朝刚"",""code"":""2206"",""sex"":""男""},{""name"":""龙欢"",""code"":""1126"",""sex"":""女""},{""name"":""田坤"",""code"":""2207"",""sex"":""男""},{""name"":""李忠玲"",""code"":""3047"",""sex"":""女""},{""name"":""包玲芳"",""code"":""9307"",""sex"":""女""},{""name"":""许甜"",""code"":""2175"",""sex"":""女""},{""name"":""陈强"",""code"":""9306"",""sex"":""男""},{""name"":""韩亦"",""code"":""9406"",""sex"":""女""},{""name"":""姜欣禹"",""code"":""2192"",""sex"":""女""},{""name"":""李莹银"",""code"":""2209"",""sex"":""女""},{""name"":""张佳静"",""code"":""9437"",""sex"":""女""},{""name"":""陈运"",""code"":""9308"",""sex"":""女""},{""name"":""钱发聪"",""code"":""9300"",""sex"":""男""},{""name"":""旷运丹"",""code"":""9305"",""sex"":""女""},{""name"":""苏秋"",""code"":""2001"",""sex"":""女""},{""name"":""胡诗岚"",""code"":""9424"",""sex"":""女""},{""name"":""杨蓉"",""code"":""9435"",""sex"":""女""},{""name"":""杨佳"",""code"":""9438"",""sex"":""女""},{""name"":""张蜜"",""code"":""9430"",""sex"":""女""},{""name"":""周悦"",""code"":""9421"",""sex"":""女""},{""name"":""邓蓉"",""code"":""2188"",""sex"":""女""},{""name"":""梁婷"",""code"":""3121"",""sex"":""女""},{""name"":""周相君"",""code"":""1315"",""sex"":""女""},{""name"":""余港平"",""code"":""9303"",""sex"":""男""},{""name"":""赵岳"",""code"":""9423"",""sex"":""男""},{""name"":""刘德燕"",""code"":""9426"",""sex"":""女""},{""name"":""甘星宇"",""code"":""9407"",""sex"":""男""},{""name"":""雷弋靖"",""code"":""9433"",""sex"":""女""},{""name"":""郭权国"",""code"":""9301"",""sex"":""男""},{""name"":""朱婷婷"",""code"":""9405"",""sex"":""女""},{""name"":""杨双玲"",""code"":""9436"",""sex"":""女""},{""name"":""殷慧慧"",""code"":""2194"",""sex"":""女""},{""name"":""罗家琳"",""code"":""9418"",""sex"":""女""},{""name"":""杨小丽"",""code"":""9311"",""sex"":""女""}]";
+        const string UserJson = @"[{""name"":""周红"",""code"":""5008"",""sex"":""女"",""number"":""8621""},{""name"":""李恒树"",""code"":""5007"",""sex"":""女"",""number"":""512x""},{""name"":""陈轶"",""code"":""7017"",""sex"":""男"",""number"":""1215""},{""name"":""杨宏川"",""code"":""7064"",""sex"":""男"",""number"":""641X""},{""name"":""李舒心"",""code"":""7063"",""sex"":""男"",""number"":""181X""},{""name"":""朱才华"",""code"":""7049"",""sex"":""男"",""number"":""0319""},{""name"":""萧亚君"",""code"":""7062"",""sex"":""女"",""number"":""9343""},{""name"":""周玮"",""code"":""7067"",""sex"":""女"",""number"":""0323""},{""name"":""游翼嘉"",""code"":""7069"",""sex"":""男"",""number"":""5017""},{""name"":""杨阳"",""code"":""7054"",""sex"":""男"",""number"":""591X""},{""name"":""徐仕超"",""code"":""7038"",""sex"":""男"",""number"":""4070""},{""name"":""曹航"",""code"":""7057"",""sex"":""男"",""number"":""2619""},{""name"":""郭泽"",""code"":""7058"",""sex"":""男"",""number"":""9111""},{""name"":""黄鑫"",""code"":""7059"",""sex"":""男"",""number"":""6857""},{""name"":""邓勇"",""code"":""7050"",""sex"":""男"",""number"":""4631""},{""name"":""张亚"",""code"":""7065"",""sex"":""女"",""number"":""0066""},{""name"":""童小燕"",""code"":""7068"",""sex"":""女"",""number"":""3042""},{""name"":""姜丽"",""code"":""8031"",""sex"":""女"",""number"":""0049""},{""name"":""刘宇浩"",""code"":""8078"",""sex"":""女"",""number"":""7320""},{""name"":""殷霞"",""code"":""8071"",""sex"":""女"",""number"":""4524""},{""name"":""王忠玉"",""code"":""8001"",""sex"":""女"",""number"":""3040""},{""name"":""游亚玲"",""code"":""8030"",""sex"":""女"",""number"":""5048""},{""name"":""李丹"",""code"":""8079"",""sex"":""女"",""number"":""0840""},{""name"":""黄秋霞"",""code"":""8080"",""sex"":""女"",""number"":""2567""},{""name"":""冯婷婷"",""code"":""8081"",""sex"":""女"",""number"":""3945""},{""name"":""张静"",""code"":""3306"",""sex"":""女"",""number"":""0043""},{""name"":""杨蕊伊"",""code"":""8019"",""sex"":""女"",""number"":""6566""},{""name"":""张洁"",""code"":""5011"",""sex"":""女"",""number"":""9426""},{""name"":""李永智"",""code"":""1155"",""sex"":""女"",""number"":""6625""},{""name"":""马微"",""code"":""9350"",""sex"":""女"",""number"":""0328""},{""name"":""杨爽"",""code"":""6001"",""sex"":""女"",""number"":""3422""},{""name"":""陈露"",""code"":""6028"",""sex"":""女"",""number"":""7023""},{""name"":""谭雪芹"",""code"":""6037"",""sex"":""女"",""number"":""8466""},{""name"":""李星"",""code"":""2041"",""sex"":""女"",""number"":""0025""},{""name"":""余成勇"",""code"":""3316"",""sex"":""女"",""number"":""5701""},{""name"":""刘艺情"",""code"":""2017"",""sex"":""女"",""number"":""3963""},{""name"":""罗晓娟"",""code"":""2097"",""sex"":""女"",""number"":""0822""},{""name"":""俞磊"",""code"":""9429"",""sex"":""男"",""number"":""0038""},{""name"":""刘淋淋"",""code"":""9425"",""sex"":""女"",""number"":""8624""},{""name"":""赵小利"",""code"":""2009"",""sex"":""女"",""number"":""2206""},{""name"":""赵学樑"",""code"":""9516"",""sex"":""男"",""number"":""0019""},{""name"":""郑均"",""code"":""9517"",""sex"":""女"",""number"":""4404""},{""name"":""王胜"",""code"":""3005"",""sex"":""男"",""number"":""1810""},{""name"":""王裕玲"",""code"":""9336"",""sex"":""男"",""number"":""2713""},{""name"":""曾光"",""code"":""9345"",""sex"":""男"",""number"":""0811""},{""name"":""张会梅"",""code"":""9518"",""sex"":""女"",""number"":""8481""},{""name"":""周小龙"",""code"":""2168"",""sex"":""男"",""number"":""1313""},{""name"":""李玉"",""code"":""2151"",""sex"":""女"",""number"":""2025""},{""name"":""张晓亚"",""code"":""1120"",""sex"":""女"",""number"":""5020""},{""name"":""陈思言"",""code"":""1098"",""sex"":""女"",""number"":""0020""},{""name"":""姜婷"",""code"":""1097"",""sex"":""女"",""number"":""2367""},{""name"":""付冰心"",""code"":""1135"",""sex"":""女"",""number"":""0583""},{""name"":""陈红"",""code"":""1129"",""sex"":""女"",""number"":""1485""},{""name"":""蒋敏"",""code"":""3108"",""sex"":""女"",""number"":""7087""},{""name"":""刘小妹"",""code"":""3080"",""sex"":""女"",""number"":""6622""},{""name"":""陈晓娇"",""code"":""9270"",""sex"":""女"",""number"":""6122""},{""name"":""孙露"",""code"":""1124"",""sex"":""女"",""number"":""6126""},{""name"":""冯小清"",""code"":""9295"",""sex"":""女"",""number"":""9184""},{""name"":""郑露"",""code"":""1117"",""sex"":""女"",""number"":""644X""},{""name"":""刘丹"",""code"":""9404"",""sex"":""女"",""number"":""5422""},{""name"":""刘兰"",""code"":""1136"",""sex"":""女"",""number"":""7120""},{""name"":""谢双霞"",""code"":""1050"",""sex"":""女"",""number"":""1861""},{""name"":""罗圆圆"",""code"":""9273"",""sex"":""女"",""number"":""4021""},{""name"":""张玉"",""code"":""1122"",""sex"":""女"",""number"":""6048""},{""name"":""周丽娜"",""code"":""3010"",""sex"":""女"",""number"":""0327""},{""name"":""马丹"",""code"":""2187"",""sex"":""女"",""number"":""0764""},{""name"":""陈宇"",""code"":""2171"",""sex"":""女"",""number"":""0024""},{""name"":""邹舟"",""code"":""2173"",""sex"":""女"",""number"":""2941""},{""name"":""呙燕华"",""code"":""2112"",""sex"":""女"",""number"":""4127""},{""name"":""邱青松"",""code"":""2196"",""sex"":""男"",""number"":""6971""},{""name"":""何林"",""code"":""2202"",""sex"":""男"",""number"":""5926""},{""name"":""谢朝刚"",""code"":""2206"",""sex"":""男"",""number"":""7992""},{""name"":""龙欢"",""code"":""1126"",""sex"":""女"",""number"":""5661""},{""name"":""田坤"",""code"":""2207"",""sex"":""男"",""number"":""0835""},{""name"":""李忠玲"",""code"":""3047"",""sex"":""女"",""number"":""3423""},{""name"":""包玲芳"",""code"":""9307"",""sex"":""女"",""number"":""0644""},{""name"":""许甜"",""code"":""2175"",""sex"":""女"",""number"":""0027""},{""name"":""陈强"",""code"":""9306"",""sex"":""男"",""number"":""4514""},{""name"":""韩亦"",""code"":""9406"",""sex"":""女"",""number"":""3229""},{""name"":""姜欣禹"",""code"":""2192"",""sex"":""女"",""number"":""2326""},{""name"":""李莹银"",""code"":""2209"",""sex"":""女"",""number"":""0349""},{""name"":""张佳静"",""code"":""9437"",""sex"":""女"",""number"":""6522""},{""name"":""陈运"",""code"":""9308"",""sex"":""女"",""number"":""4329""},{""name"":""钱发聪"",""code"":""9300"",""sex"":""男"",""number"":""2939""},{""name"":""旷运丹"",""code"":""9305"",""sex"":""女"",""number"":""1144""},{""name"":""苏秋"",""code"":""2001"",""sex"":""女"",""number"":""5729""},{""name"":""胡诗岚"",""code"":""9424"",""sex"":""女"",""number"":""5504""},{""name"":""杨蓉"",""code"":""9435"",""sex"":""女"",""number"":""6320""},{""name"":""杨佳"",""code"":""9438"",""sex"":""女"",""number"":""7324""},{""name"":""张蜜"",""code"":""9430"",""sex"":""女"",""number"":""1760""},{""name"":""周悦"",""code"":""9421"",""sex"":""女"",""number"":""424X""},{""name"":""邓蓉"",""code"":""2188"",""sex"":""女"",""number"":""0920""},{""name"":""梁婷"",""code"":""3121"",""sex"":""女"",""number"":""3720""},{""name"":""周相君"",""code"":""1315"",""sex"":""女"",""number"":""4468""},{""name"":""余港平"",""code"":""9303"",""sex"":""男"",""number"":""3430""},{""name"":""赵岳"",""code"":""9423"",""sex"":""男"",""number"":""2418""},{""name"":""刘德燕"",""code"":""9426"",""sex"":""女"",""number"":""4401""},{""name"":""甘星宇"",""code"":""9407"",""sex"":""男"",""number"":""1950""},{""name"":""雷弋靖"",""code"":""9433"",""sex"":""女"",""number"":""1720""},{""name"":""郭权国"",""code"":""9301"",""sex"":""男"",""number"":""4418""},{""name"":""朱婷婷"",""code"":""9405"",""sex"":""女"",""number"":""2463""},{""name"":""杨双玲"",""code"":""9436"",""sex"":""女"",""number"":""7842""},{""name"":""殷慧慧"",""code"":""2194"",""sex"":""女"",""number"":""2620""},{""name"":""罗家琳"",""code"":""9418"",""sex"":""女"",""number"":""1162""},{""name"":""杨小丽"",""code"":""9311"",""sex"":""女"",""number"":""1284""},{""name"":""王颖"",""code"":""8008"",""sex"":""女"",""number"":""1526""},{""name"":""犹春牛"",""code"":""9999"",""sex"":""男"",""number"":""9999""}]";
 
 
 
@@ -102,12 +103,12 @@ namespace WebSite.Controllers
                 userid = userid.Trim();
 
                 var userimodel = UserJson.JsonToObject<List<UserModel>>();
-                if (userimodel.Any(x => x.code == userid))
+                if (userimodel.Any(x => string.Equals(x.number, userid, StringComparison.OrdinalIgnoreCase)))
                 {
 
-                    var tempuser = userimodel.Where(x => x.code == userid).First();
+                    var tempuser = userimodel.FirstOrDefault(x => string.Equals(x.number, userid, StringComparison.OrdinalIgnoreCase));
 
-                    var userdata = repository.DetachedEntities.FirstOrDefault(x => x.GH == userid);
+                    var userdata = repository.DetachedEntities.FirstOrDefault(x => x.GH == tempuser.code);
                     var key = "token-Year";
                     if (userdata != null)
                     {
@@ -125,7 +126,7 @@ namespace WebSite.Controllers
                     }
                     else
                     {
-                        User user = new() { GH = userid, Sex = tempuser.sex, IsBaoming = 0, Man = 0, PiaoCount = 4, Name = tempuser.name };
+                        User user = new() { GH = tempuser.code, Sex = tempuser.sex, IsBaoming = 0, Man = 0, PiaoCount = 4, Name = tempuser.name };
                         HttpContext.Session.SetString("Uid", user.GH.ToString());
                         var re = repository.InsertNow(user).Entity;
                         var token = JWTHelper.GetJWT(re);
@@ -175,7 +176,7 @@ namespace WebSite.Controllers
             var Nvshen = List.Where(x=>x.Sex=="女").Take(3).ToList();
 
             var Nvpaihang = List.Where(x=>x.Sex=="女").Take(7).ToList();
-            var Nanshen = List.Where(x => x.Sex == "男").Take(3).ToList();
+            var Nanshen = List.Where(x => x.Sex == "男").Take(1).ToList();
 
             var Nanpaihang = List.Where(x => x.Sex == "男").Take(7).ToList();
 
@@ -201,7 +202,7 @@ namespace WebSite.Controllers
                     Name = item.Name,
                     Image = item.DTXFilePathList,
                     Piao = item.CountStr,
-                    Percentage = (item.Count / nvZongPiao).ToDecimal(2)
+                    Percentage = (((double)item.Count / nvZongPiao)*100).ToDecimal(2)
                 };
                 NvData.Add(data);
             }
@@ -223,7 +224,7 @@ namespace WebSite.Controllers
                     Name = item.Name,
                     Image = item.DTXFilePathList,
                     Piao = item.CountStr,
-                    Percentage = (item.Count / nvZongPiao).ToDecimal(2)
+                    Percentage = (((double)item.Count / nanZongPiao)*100).ToDecimal(2)
                 };
                 NanData.Add(data);
             }
@@ -439,7 +440,7 @@ namespace WebSite.Controllers
 
                         // 提交事务
                         transaction.Commit();
-                         SignalRHelper.SendSignalR("Reload", "OK");
+                        //MySendSignalR("Reload", "OK");
                         ajaxResult.Code = 1;
                         return Json(ajaxResult);
 
@@ -460,6 +461,33 @@ namespace WebSite.Controllers
                 return Json(ajaxResult);
             }
         }
+
+        public static async Task MySendSignalR(string Pagename, string msg)
+        {
+            HubConnection connection = new HubConnectionBuilder().WithUrl(new Uri("http://222.178.89.106:1211/rebateHub")).Build();
+            //HubConnection connection = new HubConnectionBuilder().WithUrl(new Uri("http://localhost:1211/rebateHub")).Build();
+            try
+            {
+
+                // 手动启动连接
+                await connection.StartAsync();
+                // 发送消息到服务端
+                await connection.InvokeAsync("SendMessagePage", Pagename, msg);
+                // 关闭连接
+                await connection.StopAsync();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                // 释放连接资源
+                await connection.DisposeAsync();
+            }
+        }
+
+
+
         [AdminUserCheck]
         public IActionResult SearchPage(string Sousuo, string Sex, int page, int limit)
         {
@@ -507,7 +535,7 @@ namespace WebSite.Controllers
 
 
 
-                var data = repository.Change<BaoMing>().DetachedEntities.OrderByDescending(i => i.Count).ToList();
+                var data = repository.Change<BaoMing>().DetachedEntities.OrderByDescending(i => i.Count).ThenBy(x=>x.UpdateTime).ToList();
 
 
 

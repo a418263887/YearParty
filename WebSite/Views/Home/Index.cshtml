@@ -11,6 +11,8 @@
     <script src="/js/minimasonry.min.js"></script>
     <link href="~/Plugin/layui/css/layui.css" rel="stylesheet" />
     <script src="/Plugin/layui/layui.js"></script>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/SignalRHelper.js"></script>
     <style>
         .biaoti {
             font-weight: 900;
@@ -184,6 +186,8 @@
                         2.只可为同一个选手投票1票
                         <br />
                         3.不能给自己投票
+                        <br />
+                        4.票数相同,先达到此票数的选手取胜
                     </el-col>
 
                 </el-row>
@@ -285,7 +289,7 @@
                 Guize: Guize,
                 dataList: [],
                 page: 1,
-                limit: 20,
+                limit: 100,
                 total: 0,
                 miniMasonry: null,
                 loading: false,
@@ -390,7 +394,9 @@
                     if (xhr.Code == 1) {
                         layer.msg("投票成功");
                         that.reloadData();
-
+                        connection.invoke("SendMessageToServer", "OK").catch(function (err) {
+                            return console.error(err.toString());
+                        });
 
                     } else {
                         layer.msg("投票失败：" + xhr.Msg);

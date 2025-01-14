@@ -11,8 +11,8 @@ namespace Util.Ext
     {
         public static async Task SendSignalR(string Pagename, string msg)
         {
-            //HubConnection connection = new HubConnectionBuilder().WithUrl(new Uri("http://192.168.100.121:1211/rebateHub")).Build();
-            HubConnection connection = new HubConnectionBuilder().WithUrl(new Uri("http://localhost:1211/rebateHub")).Build();
+            HubConnection connection = new HubConnectionBuilder().WithUrl(new Uri("http://222.178.89.106:1211/rebateHub")).Build();
+            //HubConnection connection = new HubConnectionBuilder().WithUrl(new Uri("http://localhost:1211/rebateHub")).Build();
             try
             {
 

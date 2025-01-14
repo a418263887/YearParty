@@ -36,6 +36,13 @@ var mvc = builder.Services.AddControllersWithViews().AddInjectBase().AddNewtonso
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 builder.Services.AddCorsAccessor();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
 builder.Services.AddSignalR();
 
 builder.Services.AddJsonOptions(options =>
@@ -146,6 +153,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(name: "Default", pattern: "{controller=Home}/{action=Index}/{id?}");
     endpoints.MapControllers();
 });
+app.UseCors("AllowAllOrigins");
 app.MapHub<RebateHub>("/rebateHub");
 
 Console.WriteLine("=========Æô¶¯·þÎñ=========" + DateTime.Now);
@@ -174,6 +182,7 @@ app.Run();
 
 void AddServices(WebApplicationBuilder builder)
 {
-    
+
+
 
 }

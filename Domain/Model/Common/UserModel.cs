@@ -11,5 +11,6 @@ namespace Domain.Model.Common
         public string name { get; set; }
         public string code { get; set; }
         public string sex { get; set; }
+        public string number { get; set; }
     }
 }

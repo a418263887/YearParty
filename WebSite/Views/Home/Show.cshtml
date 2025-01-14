@@ -173,6 +173,7 @@
         }
 
         .progress-bar {
+            min-width: 70px;
             background-color: #409EFF; /* 进度条颜色 */
             height: 100%; /* 进度条高度与容器相同 */
             text-align: right; /* 文本居中 */
@@ -199,9 +200,9 @@
         <div id="appp" class="container">
             <div class="box left">
                 <el-row style="margin-bottom: 60px;">
-                    <span style="font-weight: bold; font-size: 44px; font-family: 斗鱼追光体; color: #e22ba0">女神</span>
+                    <span style="font-weight: bold; font-size: 44px; font-family: 斗鱼追光体; color: #e22ba0; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;">女神</span>
                 </el-row>
-                <el-row style="color: #e22ba0">
+                <el-row style="color: #e22ba0; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;">
                     <el-col :span="8" v-for="(item, index) in dataList.NvShen" :key="index">
                         <div class="image-box" style="background-image: url('../../bz.png');">
 
@@ -256,12 +257,11 @@
             </div>
             <div class="box right">
                 <el-row style="margin-bottom: 60px;">
-                    <span style="font-weight: bold; font-size: 44px; font-family: 斗鱼追光体; color: #2b73e2">男神</span>
+                    <span style="font-weight: bold; font-size: 44px; font-family: 斗鱼追光体; color: #2b73e2; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;">男神</span>
                 </el-row>
-                <el-row style="color: #2b73e2">
+                <el-row style="color: #2b73e2; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;">
                     <el-col :span="24" v-for="(item, index) in dataList.NanShen" :key="index">
                         <div class="image-box" style="background-image: url('../../bz.png');">
-
                             <el-avatar style="margin-top:69px;margin-right:9px" :size="105" :src="item.DTXFilePathList"></el-avatar>
                             <p style="margin-top: -230px; margin-right: 5px; font-weight: bold; font-size: 24px; font-family: GEETYPE晴空黑GB-闪常规;">{{item.Name}}&nbsp;{{item.CountStr}}</p>
                             <p style="margin-top: -5px; margin-right: 5px; font-weight: bold; font-size: 14px; font-family: GEETYPE晴空黑GB-闪常规;">{{item.BuMen}}</p>
@@ -295,7 +295,9 @@
     </section>
     <script src="~/js/SignalRHelper.js"></script>
     <script>
-        connection.on("Reload", (message) => {
+        connection.on("ReceiveMessage", (message) => {
+            debugger;
+            console.log(message);
             if (message == 'OK') {
                 app.reloadData();
 

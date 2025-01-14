@@ -21,6 +21,8 @@
     <script src="~/Content/md5.js"></script>
 
     <script src="~/Plugin/jquery/jquery-1.9.1.min.js"></script>
+    <script src="/Plugin/layui/layui.js"></script>
+
     <style>
         /* 清除浏览器默认边距，
                                 使边框和内边距的值包含在元素的width和height内 */
@@ -280,7 +282,7 @@
                     <h2>网逸年会活动</h2>
                     <form>
                         <div class="inputBox">
-                            <input type="text" id="login-uid" class="form-control" placeholder="工号" />
+                            <input type="text" id="login-uid" class="form-control" placeholder="身份证后四位" />
 
                         </div>
 
@@ -424,7 +426,69 @@
             jQuery('#' + id).addClass('visible');
         }
     </script>
+    <script type="text/javascript">
 
+        //加载弹出层
+        layui.use(['form', 'element'],
+            function () {
+                layer = layui.layer;
+                element = layui.element;
+            });
+    </script>
+
+
+    <!--动态插件-->
+    <script type="text/javascript">
+        (function ($) {
+            $.msg = function (msg) {
+                layer.msg(msg);
+
+            }
+            $.alert = function (msg) {
+                layer.alert(msg)
+            }
+            $.doPost = function (url, data, callBack) {
+                var loading = layer.msg("提交中", { icon: 16, time: 9999999 });
+                return $.post(url, data).done(callBack).error(function () { $.alert("提交异常") }).complete(function () { layer.close(loading) })
+            }
+
+            $.isWeiXin = function () {
+                //window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
+                var ua = window.navigator.userAgent.toLowerCase();
+                //通过正则表达式匹配ua中是否含有MicroMessenger字符串
+                if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            $.client = function () {
+                if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) { //判断是否是iOS
+                    return "ios";
+                }
+                if (navigator.userAgent.match(/android/i)) { //判断是否是Android
+                    return "android";
+                }
+            }
+
+
+
+
+
+        })($)
+
+        $(function () {
+            $(".temp").click(function () {
+                $.msg("即将上线，敬请期待！");
+                return false;
+            })
+            $(".layloading").click(function () {
+                var index = layer.load(1, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+            })
+        })
+    </script>
 
     <script>
 
@@ -454,7 +518,7 @@
 
                 var userid = $("#login-uid").val();
                 if (userid == "") {
-                    $("#login-info").text("工号不能为空");
+                    $("#login-info").text("身份证号后四位不能为空");
                     $("#login-info").show();
                     return false;
                 }
@@ -481,9 +545,7 @@
 
                             location = location;
                         }
-
-                        $("#login-info").text(data.Msg);
-                        $("#login-info").show();
+                        layer.msg(data.Msg);
                     }
                 }, "json").error(function () {
                     location = location;
