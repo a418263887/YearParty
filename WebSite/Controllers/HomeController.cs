@@ -613,6 +613,7 @@ namespace WebSite.Controllers
                 return Json(ajaxResult);
             }
         }
+        //报名上传
         [AdminUserCheck]
         public ActionResult Upload()
         {
